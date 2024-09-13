@@ -1,0 +1,87 @@
+:root {
+  --main-color: #87CEFA;
+  --main-color-hover: #64b1e1;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+
+}
+
+header {
+  background-color: #292929;
+  color: white;
+  padding: 0.2rem 0;
+  text-align: center;
+
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+
+}
+
+nav ul li:hover {
+  color: white;
+  background-color: var(--main-color-hover);
+  text-decoration: none;
+}
+
+main {
+  padding: 2rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+footer {
+  background-color: #87CEFA;
+  color: white;
+  text-align: center;
+  padding: 0.1rem 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 1%;
+}
+
+.table-form {
+  display: none;
+  margin-left: 11%;
+}
+
+.exportar {
+  background-color: var(--main-color);
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+
+}
+
+.exportar:hover {
+  background-color: var(--main-color-hover);
+}
