@@ -2,17 +2,28 @@ $("#salvar").click(function () {
 
     let planilha = document.querySelector("input[name='1']:checked");
 
-    let tipoPlanilha = null;
     if (planilha.value == "t") {
-        tipoPlanilha = "total-table";
+        gerarPlanilhaTotal();
     }
     else if (planilha.value == "m") {
-        tipoPlanilha = "mh-table";
+        gerarPlanilhaMH();
     }
     else {
-        tipoPlanilha = "backbone-table";
+        gerarPlanilhaBB();
     }
 
     let c = document.querySelector('#container');
     let lastChild = c.lastChild;
 });
+
+function  gerarPlanilhaTotal(){
+
+}
+
+function  gerarPlanilhaMH(){
+    
+}
+
+function  gerarPlanilhaBB(){
+    
+}
