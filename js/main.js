@@ -15,9 +15,12 @@ $("#telefonia").click(function () {
     $("#telefonia-field").toggle("3s");
 });
 
-
-$("#backbone").click(function () {
+$("#backbone-secundario").click(function () {
     $("#backbone-secundario-field").toggle("3s");
+});
+
+$("#backbone-primario").click(function () {
+    $("#backbone-primario-field").toggle("3s");
 });
 
 $("#salvar").click(function () {
