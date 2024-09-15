@@ -21,7 +21,6 @@
                 <input type="radio" id="t1" value="t" name="1"> total <br>
                 <input type="radio" id="t2" value="m" name="1"> somente malha Horizontal <br>
                 <input type="radio" id="t3" value="b" name="1"> somente backbone <br>
-            
             </div>
             <br>
             
@@ -30,53 +29,81 @@
             <h3>Contexto do Andar Tipo:</h3>
             
             <label>
-                <input type="checkbox" name="ethernet" id="ethernet"> tem servico ethernet?
+                <input type="checkbox" name="ethernet" id="ethernet"> Servico ethernet
             </label>
             <br><br>
             <div id="ethernet-field" class="pontos">
-                <label for="ethernet-pontos">Número de pontos de rede para ethernet:</label>
-                <input type="number" id="ethernet-pontos" name="ethernet-pontos">
+                <label for="pts-telecom">Pontos de Telecom (total):</label>
+                <input type="number" id="pts-telecom" name="pts-telecom">
+                <label for="pts-rede">Pontos de Rede  (total):</label>
+                <input type="number" id="pts-rede" name="pts-rede">
+
+                <label>
+                    <input type="checkbox" name="voip" id="voip"> Servico VOIP
+                </label>
+                <br><br>
+                <div id="voip-field" class="pontos">
+                    <label for="pts-voip">Pontos VOIP:</label>
+                    <input type="number" id="pts-voip" name="pts-voip">
+                </div>
+
+                <label>
+                    <input type="checkbox" name="cftv" id="cftv"> Servico CFTV
+                </label>
+                <br><br>
+                <div id="cftv-field" class="pontos">
+                    <label for="pts-cftv">Pontos CFTV:</label>
+                    <input type="number" id="pts-cftv" name="pts-cftv">
+                </div>
             </div>
 
             <label>
-                <input type="checkbox" name="telefonia" id="telefonia"> tem servico para telefonia?
+                <input type="checkbox" name="telefonia" id="telefonia"> Telefonia Analógica
             </label>
             <br><br>
             <div id="telefonia-field" class="pontos">
-                <label for="telefonia-pontos">Número de pontos de rede para telefonia:</label>
-                <input type="number" id="telefonia-pontos" name="telefonia-pontos">
+                <label for="pts-telefonia">Pontos de Telefonia:</label>
+                <input type="number" id="pts-telefonia" name="pts-telefonia">
             </div>
-
-            <label>
-                <input type="checkbox" name="camera" id="camera"> tem servico para cameras?
-            </label>
-            <br><br>
-            <div id="camera-field" class="pontos">
-                <label for="ncamera-pontos">Número de pontos de rede para camera:</label>
-                <input type="number" id="camera-pontos" name="camera-pontos">
-            </div>
-            <hr>
-
             
+            <label for="distanciaMalha">Distância da Malha Horizontal (m):</label>
+            <input type="number" id="distanciaMalha" name="distanciaMalha"><br>
+
+
+            <hr>
+            
+
             <h3>Backbone:</h3>
 
             <label>
-                <input type="checkbox" name="backbone" id="backbone"> Deve-se considerar o Backbone Vertical?
+                <input type="checkbox" name="backbone" id="backbone"> Backbone Vertical
             </label>
-
-            <div id="backbone-secundario-field">
+            <div id="backbone-secundario-field" class="pontos">
                 <br><br>
                 <label for="andares">Andares:</label><br>
                 <input type="number" id="andares" name="andares"><br>
-                <label for="velocidadeFibra">Velocidade Mínima da Fibra Óptica (Gbps):</label>
-                <input type="number" id="velocidadeFibra" name="velocidadeFibra"><br>
-                <label for="distanciaMalha">Distância da Malha Horizontal (m):</label>
-                <input type="number" id="distanciaMalha" name="distanciaMalha"><br>
+                <label for="velocidadeFibraPredio">Velocidade Mínima da Fibra Óptica (Gbps):</label>
+                <input type="number" id="velocidadeFibraPredio" name="velocidadeFibraPredio"><br>
                 <label for="alturaPeDireito">Altura do Pé-Direito (m):</label>
                 <input type="number" id="alturaPeDireito" name="alturaPeDireito"><br>
-                <button type="button" id="salvar">Salvar</button>
-                <br><br>
             </div>
+            <br><br>
+            
+            <label>
+                <input type="checkbox" name="backbone" id="backbone"> Backbone de Campus
+            </label>
+            <div id="backbone-secundario-field" class="pontos">
+                <br><br>
+                <label for="predios">Prédios:</label><br>
+                <input type="number" id="predios" name="predios"><br>
+                <label for="velocidadeFibraCampus">Velocidade Mínima da Fibra Óptica (Gbps):</label>
+                <input type="number" id="velocidadeFibraCampus" name="velocidadeFibraCampus"><br>
+                <label for="distPredios">Distância entre Prédios (m):</label>
+                <input type="number" id="distPredios" name="distPredios"><br>
+            </div>
+            <br><br>
+
+            <button type="button" id="salvar">Salvar</button>
         </form>
 
 

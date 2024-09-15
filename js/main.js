@@ -3,16 +3,21 @@ $("#ethernet").click(function () {
     $("#ethernet-field").toggle("3s");
 });
 
+$("#voip").click(function () {
+    $("#voip-field").toggle("3s");
+});
+
+$("#cftv").click(function () {
+    $("#cftv-field").toggle("3s");
+});
+
 $("#telefonia").click(function () {
     $("#telefonia-field").toggle("3s");
 });
 
-$("#camera").click(function () {
-    $("#camera-field").toggle("3s");
-});
 
 $("#backbone").click(function () {
-    $("backbone-secundario-field").toggle("3s");
+    $("#backbone-secundario-field").toggle("3s");
 });
 
 $("#salvar").click(function () {
