@@ -11,6 +11,10 @@ $("#camera").click(function () {
     $("#camera-field").toggle("3s");
 });
 
+$("#backbone").click(function () {
+    $("backbone-secundario-field").toggle("3s");
+});
+
 $("#salvar").click(function () {
 
 $("main").css("display"," ");
