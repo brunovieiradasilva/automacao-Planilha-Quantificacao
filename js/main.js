@@ -32,15 +32,17 @@ let tipoPlanilha = null;
 
     var ex1 = $('<a>', {
         class: "exportar",
+        download: "quantificacao.xls",
         href: "#",
-        onclick: "return ExcellentExport.excel(this," + tipoPlanilha + ", 'Quantificacao');",
+        onclick: "return ExcellentExport.excel(this,'" + tipoPlanilha + "', 'Quantificacao');",
         text: "Exportar para excel"
     });
 
     var ex2 = $('<a>', {
         class: "exportar",
+        download: "quantificacao.csv",
         href: "#",
-        onclick: "return ExcellentExport.csv(this," + tipoPlanilha + ", 'Quantificacao');",
+        onclick: "return ExcellentExport.csv(this, '"+ tipoPlanilha + "', 'Quantificacao');",
         text: "Exportar para csv"
     });
     $(".exportar").remove();
