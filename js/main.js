@@ -27,7 +27,7 @@ let tipoPlanilha = null;
     else {
         tipoPlanilha = "backbone-table";
     }
-
+    $(".table-form").hide("3s");
     $("#"+tipoPlanilha+"s").show("3s");
 
     var ex1 = $('<a>', {
