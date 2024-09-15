@@ -196,3 +196,8 @@
     direction: ltr;
     padding: 0px 3px 0px 3px;
 }
+
+.column-headers-background, .row-header-wrapper{
+    display: none;
+
+}

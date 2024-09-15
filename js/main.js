@@ -1,49 +1,49 @@
-let cor = 'black'
-$("#home-tab").click(() => {
-    $("#home").show("3s");
 
-    $("#home-tab").parent().css("background-color",cor);
-    $("#backbone-tab").parent().css("background-color",'');
-    $("#infra-tab").parent().css("background-color",'');
-    $("#sobre-tab").parent().css("background-color",'');
-
-    $("#backbone").hide("3s");
-    $("#infra").hide("3s");
-    $("#sobre").hide("3s");
+$("#ethernet").click(function () {
+    $("#ethernet-field").toggle("3s");
 });
-$("#backbone-tab").click(() => {
-    $("#backbone").show("3s");
 
-    $("#backbone-tab").parent().css("background-color",cor);
-    $("#home-tab").parent().css("background-color",'');
-    $("#infra-tab").parent().css("background-color",'');
-    $("#sobre-tab").parent().css("background-color",'');
-
-    $("#home").hide("3s");
-    $("#infra").hide("3s");
-    $("#sobre").hide("3s");
+$("#telefonia").click(function () {
+    $("#telefonia-field").toggle("3s");
 });
-$("#infra-tab").click(() => {
-    $("#infra").show("3s");
 
-    $("#infra-tab").parent().css("background-color",cor);
-    $("#backbone-tab").parent().css("background-color",'');
-    $("#home-tab").parent().css("background-color",'');
-    $("#sobre-tab").parent().css("background-color",'');
-
-    $("#backbone").hide("3s");
-    $("#home").hide("3s");
-    $("#sobre").hide("3s");
+$("#camera").click(function () {
+    $("#camera-field").toggle("3s");
 });
-$("#sobre-tab").click(() => {
-    $("#sobre").show("3s");
 
-    $("#sobre-tab").parent().css("background-color",cor);
-    $("#backbone-tab").parent().css("background-color",'');
-    $("#infra-tab").parent().css("background-color",'');
-    $("#home-tab").parent().css("background-color",'');
+$("#salvar").click(function () {
 
-    $("#backbone").hide("3s");
-    $("#infra").hide("3s");
-    $("#home").hide("3s");
+$("main").css("display"," ");
+
+let planilha = document.querySelector("input[name='1']:checked");
+
+let tipoPlanilha = null;
+    if (planilha.value == "t") {
+        tipoPlanilha = "total-table";
+    }
+    else if (planilha.value == "m") {
+        tipoPlanilha = "mh-table";
+    }
+    else {
+        tipoPlanilha = "backbone-table";
+    }
+
+    $("#"+tipoPlanilha+"s").show("3s");
+
+    var ex1 = $('<a>', {
+        class: "exportar",
+        href: "#",
+        onclick: "return ExcellentExport.excel(this," + tipoPlanilha + ", 'Quantificacao');",
+        text: "Exportar para excel"
+    });
+
+    var ex2 = $('<a>', {
+        class: "exportar",
+        href: "#",
+        onclick: "return ExcellentExport.csv(this," + tipoPlanilha + ", 'Quantificacao');",
+        text: "Exportar para csv"
+    });
+    $(".exportar").remove();
+    $("#quantificacao-form").append(ex1);
+    $("#quantificacao-form").append(ex2);
 });

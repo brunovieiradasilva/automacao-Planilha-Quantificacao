@@ -1,817 +1,558 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantificacao</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="script.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Quantificacao de materiais</h1>
-        <nav>
-            <ul>
-                <li><a id="home-tab" href="#home" data-toggle="tab">Home</a></li>
-                <li><a id="backbone-tab" href="#backbone" data-toggle="tab">Quantificação Backbone</a></li>
-                <li><a id="infra-tab" href="#infra" data-toggle="tab">Quantificação Infra</a></li>
-                <li><a id="sobre-tab" href="#sobre" data-toggle="tab">Sobre</a></li>
-            </ul>
-        </nav>
     </header>
     <main>
-        <div class="tab-content">
-            <div id="home">
-             
+
+        <form id="quantificacao-form">
+            <h2>Formulário de Infraestrutura</h2>
+            <div>Planilha: <br>
+                <input type="radio" id="t1" value="t" name="1"> total <br>
+                <input type="radio" id="t2" value="m" name="1"> somente malha Horizontal <br>
+                <input type="radio" id="t3" value="b" name="1"> somente backbone <br>
+            
+            </div>
+            <br>
+<hr>
+            servicos:
+            <br>
+            <label>
+                <input type="checkbox" name="ethernet" id="ethernet"> tem servico ethernet?
+            </label>
+            <br><br>
+            <div id="ethernet-field" class="pontos">
+                <label for="ethernet-pontos">Número de pontos de rede para ethernet:</label>
+                <input type="number" id="ethernet-pontos" name="ethernet-pontos">
             </div>
 
-            <div id="backbone"  class="table-form">
-                <div class="form">
-
-                </div>
-                <div class="table" id="backbone-table">
-                    <div class="ritz grid-container" dir="ltr">
-                        <table class="waffle" cellspacing="0" cellpadding="0">
-                            <link rel="stylesheet" href="css/text.css">
-                            <thead>
-                                <tr>
-                                    <th class="row-header freezebar-origin-ltr"></th>
-                                    <th id="73215604C0" style="width:59px;" class="column-headers-background">A</th>
-                                    <th id="73215604C1" style="width:782px;" class="column-headers-background">B</th>
-                                    <th id="73215604C2" style="width:61px;" class="column-headers-background">C</th>
-                                    <th id="73215604C3" style="width:69px;" class="column-headers-background">D</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="height: 33px">
-                                    <th id="73215604R0" style="height: 33px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 33px">1</div>
-                                    </th>
-                                    <td class="s0">ITEM</td>
-                                    <td class="s0">DESCRIÇÃO BÁSICA - MATERIAL DE INFRA DE REDE </td>
-                                    <td class="s0">UNID.</td>
-                                    <td class="s1">QTDE TOTAL</td>
-                                </tr>
-                                <tr style="height: 23px">
-                                    <th id="73215604R1" style="height: 23px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 23px">2</div>
-                                    </th>
-                                    <td class="s0">1</td>
-                                    <td class="s2">Distribuidor óptico, Terminadores e Acessórios</td>
-                                    <td class="s3"></td>
-                                    <td class="s3"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R2" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">3</div>
-                                    </th>
-                                    <td class="s4">1.a</td>
-                                    <td class="s5" dir="ltr"><span style="font-weight:bold;">Distribuidor óptico (DIO)</span> - chassi com
-                                        19&quot; de largura e 1U de altura com (16 portas)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R3" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">4</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5" dir="ltr"><span style="font-weight:bold;">Acessórios:</span> caixa de emenda ou bandeja
-                                        de emenda (nº de fibras), Protetores de emenda, abraçadeiras plásticas.</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R4" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">5</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5" dir="ltr">caixa de emenda (para 16 fibras)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R5" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">6</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5" dir="ltr">bandeija de emenda ( para 16 fibras)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R6" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">7</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5" dir="ltr">proteores de emenda </td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R7" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">8</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5" dir="ltr">abraçadeiras plasticas</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R8" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">9</div>
-                                    </th>
-                                    <td class="s4">1.b</td>
-                                    <td class="s5" dir="ltr"><span style="font-weight:bold;">PigTail</span> (monomodo OS1, 9x125μm),
-                                        (simples), (lc), (2m) e (azul)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R9" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">10</div>
-                                    </th>
-                                    <td class="s4">1.c</td>
-                                    <td class="s5" dir="ltr"><span style="font-weight:bold;">Acoplador óptico </span>(monomodo OS1,
-                                        9x125μm), (simples), (lc) e (azul)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R10" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">11</div>
-                                    </th>
-                                    <td class="s4">1.d</td>
-                                    <td class="s5" dir="ltr"><span style="font-weight:bold;">Cordão óptico</span> (monomodo OS1, 9x125μm),
-                                        (simples), (lc), (2m) e (azul)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R11" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">12</div>
-                                    </th>
-                                    <td class="s4" colspan="2"></td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R12" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">13</div>
-                                    </th>
-                                    <td class="s0">2</td>
-                                    <td class="s2">Terminador Óptico</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R13" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">14</div>
-                                    </th>
-                                    <td class="s4">2.a</td>
-                                    <td class="s5"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Terminador
-                                            Óptico</span><span style="font-size:10pt;font-family:Arial;"> (2, 4, 6 ou 8 fibras)</span></td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R14" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">15</div>
-                                    </th>
-                                    <td class="s6">2.b</td>
-                                    <td class="s7"><span style="font-size:9pt;font-family:Arial;font-weight:bold;">PigTail</span><span
-                                            style="font-size:9pt;font-family:Arial;"> (especificação da fibra, núcleo e casca), (simples ou
-                                            duplo), (tipo de conector), (tamanho em metros) e (cor)</span></td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s6" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R15" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">16</div>
-                                    </th>
-                                    <td class="s6" colspan="2"></td>
-                                    <td class="s6"></td>
-                                    <td class="s6"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R16" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">17</div>
-                                    </th>
-                                    <td class="s0">3</td>
-                                    <td class="s2">Cabos ópticos</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R17" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">18</div>
-                                    </th>
-                                    <td class="s4">3.a</td>
-                                    <td class="s5" dir="ltr">Cabo Óptico (SM), (9x125μm), (ight Buffer) e (12 fibras)</td>
-                                    <td class="s4">m</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R18" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">19</div>
-                                    </th>
-                                    <td class="s4" colspan="2"></td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R19" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">20</div>
-                                    </th>
-                                    <td class="s0">4</td>
-                                    <td class="s2">Detalhamento do Rack do Backbone</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R20" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">21</div>
-                                    </th>
-                                    <td class="s4">4.a</td>
-                                    <td class="s5" dir="ltr"><span style="font-weight:bold;">Rack </span>(Aberto), (Tamanho: = 28U)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R21" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">22</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5">Obs: Acessórios para instalação no Rack (Bandeja, porca gaiola, organizador lateral,
-                                        régua de fechamento, exaustor, etc)</td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R22" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">23</div>
-                                    </th>
-                                    <td class="s8">4.e</td>
-                                    <td class="s9">Switch de fibra óptica (24 portas)</td>
-                                    <td class="s8">Unid.</td>
-                                    <td class="s8"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R23" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">24</div>
-                                    </th>
-                                    <td class="s4">4.b</td>
-                                    <td class="s5">Bandeja fixa - 19&quot; de lagura</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R24" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">25</div>
-                                    </th>
-                                    <td class="s4">4.c</td>
-                                    <td class="s5">bandeja deslizante - 19&quot; de lagura</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R25" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">26</div>
-                                    </th>
-                                    <td class="s4">4.d</td>
-                                    <td class="s5">Parafuso Porca Gaiola (conjunto com 10 unidades)</td>
-                                    <td class="s4">Conj.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R26" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">27</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">4.e</td>
-                                    <td class="s5" dir="ltr">DVR (2U) (24 Portas)</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R27" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">28</div>
-                                    </th>
-                                    <td class="s4">3.e1</td>
-                                    <td class="s5" dir="ltr">Organizador frontal para Rack </td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R28" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">29</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">3.e2</td>
-                                    <td class="s5" dir="ltr">Organizador lateral para Rack 28U</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R29" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">30</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">3.e3</td>
-                                    <td class="s5" dir="ltr">Regua de fechamento para Rack</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R30" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">31</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">3.e4</td>
-                                    <td class="s5" dir="ltr">exaustor (2U)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R31" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">32</div>
-                                    </th>
-                                    <td class="s0">5</td>
-                                    <td class="s2">Miscelânea</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R32" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">33</div>
-                                    </th>
-                                    <td class="s4">5.a</td>
-                                    <td class="s5">Abraçadeira de velcro</td>
-                                    <td class="s4">m</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R33" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">34</div>
-                                    </th>
-                                    <td class="s4">5.b</td>
-                                    <td class="s5">Abraçadeira Hellermann (conjunto com 100 unidades)</td>
-                                    <td class="s4">conj.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R34" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">35</div>
-                                    </th>
-                                    <td class="s4">5.c </td>
-                                    <td class="s5" dir="ltr">Filtro de linha com 08 tomadas</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R35" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">36</div>
-                                    </th>
-                                    <td class="s4">5.d</td>
-                                    <td class="s5">Etiquetas para Rack.</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R36" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">37</div>
-                                    </th>
-                                    <td class="s4">5.e</td>
-                                    <td class="s5">Etiquetas para Switch e DIO</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R37" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">38</div>
-                                    </th>
-                                    <td class="s4">5.f</td>
-                                    <td class="s5">Etiquetas para identificação dos cordões ópticos e Pigtails externos</td>
-                                    <td class="s4">unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="73215604R38" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">39</div>
-                                    </th>
-                                    <td class="s5"></td>
-                                    <td class="s5"></td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <br>
-                <a class="exportar" download="Quantificacao.xls" href="#" onclick="return ExcellentExport.excel(this, 'infra-table', 'Sheet Name Here');">Exportar para Excel</a>
-                <a class="exportar" download="Quantificacao.csv" href="#" onclick="return ExcellentExport.csv(this, 'infra-table');">Exportar para CSV</a>
+            <label>
+                <input type="checkbox" name="telefonia" id="telefonia"> tem servico para telefonia?
+            </label>
+            <br><br>
+            <div id="telefonia-field" class="pontos">
+                <label for="telefonia-pontos">Número de pontos de rede para telefonia:</label>
+                <input type="number" id="telefonia-pontos" name="telefonia-pontos">
             </div>
 
-            <div id="infra" class="table-form">
-                <div class="form">
-
-                </div>
-                <div class="table">
-                    <div class="ritz grid-container" dir="ltr">
-                        <table class="waffle" cellspacing="0" cellpadding="0" id="infra-table" >
-                            <link rel="stylesheet" href="css/text.css">
-                            <thead>
-                                <tr>
-                                    <th class="row-header freezebar-origin-ltr"></th>
-                                    <th id="1413246243C0" style="width:59px;" class="column-headers-background">A</th>
-                                    <th id="1413246243C1" style="width:774px;" class="column-headers-background">B</th>
-                                    <th id="1413246243C2" style="width:61px;" class="column-headers-background">C</th>
-                                    <th id="1413246243C3" style="width:69px;" class="column-headers-background">D</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="height: 33px">
-                                    <th id="1413246243R0" style="height: 33px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 33px">1</div>
-                                    </th>
-                                    <td class="s0">ITEM</td>
-                                    <td class="s0">DESCRIÇÃO BÁSICA - MATERIAL DE INFRA DE REDE </td>
-                                    <td class="s0">UNID.</td>
-                                    <td class="s1">QTDE TOTAL</td>
-                                </tr>
-                                <tr style="height: 23px">
-                                    <th id="1413246243R1" style="height: 23px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 23px">2</div>
-                                    </th>
-                                    <td class="s0">1</td>
-                                    <td class="s2">ÁREA DE TRABALHO</td>
-                                    <td class="s3"></td>
-                                    <td class="s3"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R2" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">3</div>
-                                    </th>
-                                    <td class="s4">1.a</td>
-                                    <td class="s5">Tomada RJ 45 Fêmea (categoria 6) </td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R3" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">4</div>
-                                    </th>
-                                    <td class="s4">1.b</td>
-                                    <td class="s5">Cordão de ligação (Patch Cord), (categoria 6), (Tamanho 3 m), (cor: azul)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R4" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">5</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">1.c1</td>
-                                    <td class="s5" dir="ltr">Espelho de conexão (Tamanho 4x4, 2 furações)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R5" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">6</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">1.c2</td>
-                                    <td class="s5" dir="ltr">Espelho de conexão (Tamanho 2x4, 2 furações)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R6" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">7</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">1.c3</td>
-                                    <td class="s5" dir="ltr">Espelho de conexão (Tamanho 2x4, 1 furação)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R7" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">8</div>
-                                    </th>
-                                    <td class="s4">1.d</td>
-                                    <td class="s5">Etiquetas para identificação de tomadas e espelho</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R8" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">9</div>
-                                    </th>
-                                    <td class="s6"></td>
-                                    <td class="s7"></td>
-                                    <td class="s6"></td>
-                                    <td class="s6"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R9" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">10</div>
-                                    </th>
-                                    <td class="s0">2</td>
-                                    <td class="s2">Cabeamento Horizontal</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R10" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">11</div>
-                                    </th>
-                                    <td class="s4">2.a</td>
-                                    <td class="s5">Cabo UTP rígido (categoria 6) </td>
-                                    <td class="s4">Cx´s</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R11" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">12</div>
-                                    </th>
-                                    <td class="s4">2.b</td>
-                                    <td class="s5">Etiqueta identificação do cabo de malha horizontal</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R12" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">13</div>
-                                    </th>
-                                    <td class="s6"></td>
-                                    <td class="s7"></td>
-                                    <td class="s6"></td>
-                                    <td class="s6"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R13" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">14</div>
-                                    </th>
-                                    <td class="s0">3</td>
-                                    <td class="s2">Sala de Equipamentos / Telecom (SEQ/SET)</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R14" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">15</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">3.a</td>
-                                    <td class="s8">PPMH (Patch Panel de Malha Horizontal)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R15" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">16</div>
-                                    </th>
-                                    <td class="s9" dir="ltr">3.a1</td>
-                                    <td class="s10">Painel de Telecomunicaçoes (Patch Panel), (Categoria 6), (24 portas), (Altura: 1U)</td>
-                                    <td class="s9">Unid.</td>
-                                    <td class="s9" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R16" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">17</div>
-                                    </th>
-                                    <td class="s9" dir="ltr">3.a2</td>
-                                    <td class="s10" dir="ltr">Switch (Patch Panel), (Categoria 6), (24 portas), (Altura: 1U)</td>
-                                    <td class="s9">Unid.</td>
-                                    <td class="s9" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R17" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">18</div>
-                                    </th>
-                                    <td class="s4">3.b</td>
-                                    <td class="s5">Organizador frontal de cabo - Tipo - (Unidade de altura e largura: 19 polegadas)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R18" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">19</div>
-                                    </th>
-                                    <td class="s4">3.c</td>
-                                    <td class="s5">Etiquetas de identificação de portas do Patch Panel</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R19" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">20</div>
-                                    </th>
-                                    <td class="s4">3.d</td>
-                                    <td class="s8">Cordão de Ligação, flexível, (Patch Cable)</td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R20" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">21</div>
-                                    </th>
-                                    <td class="s4">3.d1</td>
-                                    <td class="s5">Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m), (cor: azul)
-                                    </td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s9" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R21" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">22</div>
-                                    </th>
-                                    <td class="s9" dir="ltr">3.d2</td>
-                                    <td class="s10" dir="ltr">Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),
-                                        (cor: amarelo)</td>
-                                    <td class="s9">Unid.</td>
-                                    <td class="s9" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R22" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">23</div>
-                                    </th>
-                                    <td class="s9" dir="ltr">3.d3</td>
-                                    <td class="s10" dir="ltr">Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),
-                                        (cor: vermelho)</td>
-                                    <td class="s9">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R23" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">24</div>
-                                    </th>
-                                    <td class="s4">3.e</td>
-                                    <td class="s5" dir="ltr">Rack (Aberto), (Tamanho: = 32u)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R24" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">25</div>
-                                    </th>
-                                    <td class="s4"></td>
-                                    <td class="s5">Obs: Acessórios para instalação no Rack (Bandeja, porca gaiola, organizador lateral,
-                                        régua de fechamento, exaustor, etc)</td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R25" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">26</div>
-                                    </th>
-                                    <td class="s4">3.e1</td>
-                                    <td class="s5" dir="ltr">Organizador lateral para Rack 32U</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R26" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">27</div>
-                                    </th>
-                                    <td class="s4">3.e2</td>
-                                    <td class="s5">Bandeja fixa - 19&quot; de lagura</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R27" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">28</div>
-                                    </th>
-                                    <td class="s4">3.e3</td>
-                                    <td class="s5">bandeja deslizante - 19&quot; de lagura</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R28" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">29</div>
-                                    </th>
-                                    <td class="s4">3.e4</td>
-                                    <td class="s5">Parafuso Porca Gaiola (conjunto com 10 unidades)</td>
-                                    <td class="s4">Conj.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R29" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">30</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">3.e5</td>
-                                    <td class="s5" dir="ltr">exaustor (2U)</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R30" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">31</div>
-                                    </th>
-                                    <td class="s4" dir="ltr">3.e6</td>
-                                    <td class="s5" dir="ltr">Regua de fechamento para Rack</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R31" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">32</div>
-                                    </th>
-                                    <td class="s11"></td>
-                                    <td class="s11"></td>
-                                    <td class="s11"></td>
-                                    <td class="s12"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R32" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">33</div>
-                                    </th>
-                                    <td class="s0">4</td>
-                                    <td class="s2">Miscelânea</td>
-                                    <td class="s0"></td>
-                                    <td class="s0"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R33" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">34</div>
-                                    </th>
-                                    <td class="s4">4.a</td>
-                                    <td class="s5">Abraçadeira de velcro</td>
-                                    <td class="s4">m</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R34" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">35</div>
-                                    </th>
-                                    <td class="s4">4.b</td>
-                                    <td class="s5">Abraçadeira Hellermann (conjunto com 100 unidades)</td>
-                                    <td class="s4">Conj.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R35" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">36</div>
-                                    </th>
-                                    <td class="s4">4.c </td>
-                                    <td class="s5" dir="ltr">Filtro de linha com 08 tomadas</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R36" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">37</div>
-                                    </th>
-                                    <td class="s4">4.d</td>
-                                    <td class="s5">Etiquetas para Rack.</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R37" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">38</div>
-                                    </th>
-                                    <td class="s4">4.e</td>
-                                    <td class="s5">Etiquetas para Switch e Patch Panel</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4" dir="ltr"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R38" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">39</div>
-                                    </th>
-                                    <td class="s4">4.f</td>
-                                    <td class="s5">Etiquetas para identificação dos pach Cables</td>
-                                    <td class="s4">Unid.</td>
-                                    <td class="s4"></td>
-                                </tr>
-                                <tr style="height: 16px">
-                                    <th id="1413246243R39" style="height: 16px;" class="row-headers-background">
-                                        <div class="row-header-wrapper" style="line-height: 16px">40</div>
-                                    </th>
-                                    <td class="s5"></td>
-                                    <td class="s5"></td>
-                                    <td class="s4"></td>
-                                    <td class="s4"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <br>
-                <a class="exportar" download="Quantificacao.xls" href="#" onclick="return ExcellentExport.excel(this, 'infra-table', 'Quantificacao');">Exportar para Excel</a>
-                <a class="exportar" download="Quantificacao.csv" href="#" onclick="return ExcellentExport.csv(this, 'infra-table');">Exportar para CSV</a>
+            <label>
+                <input type="checkbox" name="camera" id="camera"> tem servico para cameras?
+            </label>
+            <br><br>
+            <div id="camera-field" class="pontos">
+                <label for="ncamera-pontos">Número de pontos de rede para camera:</label>
+                <input type="number" id="camera-pontos" name="camera-pontos">
             </div>
+            <hr>
+            <label>
+                <input type="checkbox" name="backbone" id="backbone"> Backbone Secundário
+            </label>
+            <br><br>
+            <label for="andares">Andares:</label><br>
+            <input type="number" id="andares" name="andares"><br>
+            <label for="velocidadeFibra">Velocidade Mínima da Fibra Óptica (Gbps):</label>
+            <input type="number" id="velocidadeFibra" name="velocidadeFibra"><br>
+            <label for="distanciaMalha">Distância da Malha Horizontal (m):</label>
+            <input type="number" id="distanciaMalha" name="distanciaMalha"><br>
+            <label for="alturaPeDireito">Altura do Pé-Direito (m):</label>
+            <input type="number" id="alturaPeDireito" name="alturaPeDireito"><br>
+            <button type="button" id="salvar">Salvar</button>
+            <br> <br>
+        </form>
 
-            <div id="sobre">
-               
-            </div>
-        </div>
+
     </main>
-<!-- table para arquivo planilha -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/excellentexport@3.4.3/dist/excellentexport.min.js"></script>
-<!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.1.js"
-    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-<!-- js -->
-    <script src="js/main.js"></script>
 
+<div id="tables">
+    <div id="backbone-tables" class="table-form">
+
+    </div>
+    
+    <div id="mh-tables" class="table-form">
+    
+    
+    </div>
+    
+    <div id="total-tables" class="table-form">
+        <div class="ritz grid-container" dir="ltr">
+            <link rel="stylesheet" href="css/text.css">
+            <table id="total-table" class="waffle" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th class="row-header freezebar-origin-ltr"></th>
+                        <th id="1616767830C0" style="width:803px;" class="column-headers-background">A</th>
+                        <th id="1616767830C1" style="width:61px;" class="column-headers-background">B</th>
+                        <th id="1616767830C2" style="width:69px;" class="column-headers-background">C</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="height: 33px">
+                        <th id="1616767830R0" style="height: 33px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 33px">1</div>
+                        </th>
+                        <td class="s0">DESCRIÇÃO BÁSICA - MATERIAL DE INFRA DE REDE </td>
+                        <td class="s0">UNID.</td>
+                        <td class="s1">QTDE TOTAL</td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <th id="1616767830R1" style="height: 23px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 23px">2</div>
+                        </th>
+                        <td class="s2">ÁREA DE TRABALHO</td>
+                        <td class="s3"></td>
+                        <td class="s3"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R2" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">3</div>
+                        </th>
+                        <td class="s4">Tomada RJ 45 Fêmea (categoria 6) </td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5" dir="ltr"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R3" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">4</div>
+                        </th>
+                        <td class="s4">Cordão de ligação (Patch Cord), (categoria 6), (Tamanho 3 m), (cor: azul)</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R4" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">5</div>
+                        </th>
+                        <td class="s4">Espelho de conexão (Tamanho 2x4 ou 4x4)</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R5" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">6</div>
+                        </th>
+                        <td class="s4">Etiquetas para identificação de tomadas e espelho</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R6" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">7</div>
+                        </th>
+                        <td class="s2">Cabeamento Horizontal</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R7" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">8</div>
+                        </th>
+                        <td class="s4">Cabo UTP rígido (categoria 6) </td>
+                        <td class="s5">Cx´s</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R8" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">9</div>
+                        </th>
+                        <td class="s4">Etiqueta identificação do cabo de malha horizontal</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R9" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">10</div>
+                        </th>
+                        <td class="s2">Sala de Equipamentos / Telecom (SEQ/SET)</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R10" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">11</div>
+                        </th>
+                        <td class="s4">Painel de Telecomunicaçoes (Patch Panel), (Categoria 6), (24 portas), (Altura: 1U)</td>
+                        <td class="s5"></td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R11" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">12</div>
+                        </th>
+                        <td class="s6">PPMH (Patch Panel de Malha Horizontal)</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R12" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">13</div>
+                        </th>
+                        <td class="s4">Organizador frontal de cabo - Tipo - (Unidade de altura e largura: 19 polegadas)</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R13" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">14</div>
+                        </th>
+                        <td class="s4">Etiquetas de identificação de portas do Patch Panel</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R14" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">15</div>
+                        </th>
+                        <td class="s6">Cordão de Ligação, flexível, (Patch Cable)</td>
+                        <td class="s5"></td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R15" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">16</div>
+                        </th>
+                        <td class="s4">Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m), (cor: azul)
+                        </td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R16" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">17</div>
+                        </th>
+                        <td class="s4">Rack (Aberto), (Tamanho: = <span style="font-size:10pt;font-family:Arial;">)</span></td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R17" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">18</div>
+                        </th>
+                        <td class="s4">Obs: Acessórios para instalação no Rack (Bandeja, porca gaiola, organizador lateral,
+                            régua de fechamento, exaustor, etc)</td>
+                        <td class="s5"></td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R18" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">19</div>
+                        </th>
+                        <td class="s4">Organizador lateral para Rack 28U</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R19" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">20</div>
+                        </th>
+                        <td class="s4">Bandeja fixa - 19&quot; de lagura</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R20" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">21</div>
+                        </th>
+                        <td class="s4">bandeja deslizante - 19&quot; de lagura</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R21" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">22</div>
+                        </th>
+                        <td class="s4">Parafuso Porca Gaiola (conjunto com 10 unidades)</td>
+                        <td class="s5">Conj.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R22" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">23</div>
+                        </th>
+                        <td class="s2">Miscelânea</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R23" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">24</div>
+                        </th>
+                        <td class="s4">Abraçadeira de velcro</td>
+                        <td class="s5">m</td>
+                        <td class="s5">3</td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R24" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">25</div>
+                        </th>
+                        <td class="s4">Abraçadeira Hellermann (conjunto com 100 unidades)</td>
+                        <td class="s5">Conj.</td>
+                        <td class="s5">1</td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R25" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">26</div>
+                        </th>
+                        <td class="s4">Filtro de linha com 06 tomadas</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5">1</td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R26" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">27</div>
+                        </th>
+                        <td class="s4">Etiquetas para Rack.</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5">1</td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R27" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">28</div>
+                        </th>
+                        <td class="s4">Etiquetas para Switch e Patch Panel</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5">7</td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R28" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">29</div>
+                        </th>
+                        <td class="s4">Etiquetas para identificação dos pach Cables</td>
+                        <td class="s5">Unid.</td>
+                        <td class="s5">122</td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R29" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">30</div>
+                        </th>
+                        <td class="s2">Distribuidor óptico, Terminadores e Acessórios</td>
+                        <td class="s3"></td>
+                        <td class="s3"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R30" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">31</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Distribuidor óptico
+                                (DIO)</span><span style="font-size:10pt;font-family:Arial;"> - chassi com 19&quot; de largura e
+                                1U de altura com (12, 16, 24 ou 48 portas)</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R31" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">32</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Acessórios:</span><span
+                                style="font-size:10pt;font-family:Arial;"> caixa de emenda ou bandeja de emenda (nº de fibras),
+                                Protetores de emenda, abraçadeiras plásticas.</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R32" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">33</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">PigTail</span><span
+                                style="font-size:10pt;font-family:Arial;"> (especificação da fibra, núcleo e casca), (simples ou
+                                duplo), (tipo de conector), (tamanho em metros) e (cor)</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R33" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">34</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Acoplador
+                                óptico</span><span style="font-size:10pt;font-family:Arial;"> (especificação da fibra, núcleo e
+                                casca), (simples ou duplo), (tipo de conector) e (cor)</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R34" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">35</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Cordão
+                                óptico</span><span style="font-size:10pt;font-family:Arial;"> (especificação da fibra, núcleo e
+                                casca), (simples ou duplo), (tipo de conector), (tamanho em metros) e (cor)</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R35" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">36</div>
+                        </th>
+                        <td class="s2">Terminador Óptico</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R36" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">37</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Terminador
+                                Óptico</span><span style="font-size:10pt;font-family:Arial;"> (2, 4, 6 ou 8 fibras)</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R37" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">38</div>
+                        </th>
+                        <td class="s7"><span style="font-size:9pt;font-family:Arial;font-weight:bold;">PigTail</span><span
+                                style="font-size:9pt;font-family:Arial;"> (especificação da fibra, núcleo e casca), (simples ou
+                                duplo), (tipo de conector), (tamanho em metros) e (cor)</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s8"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R38" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">39</div>
+                        </th>
+                        <td class="s2">Cabos ópticos</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R39" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">40</div>
+                        </th>
+                        <td class="s4">Cabo Óptico (MM ou SM), (núcleo e casca), (Loose, Loose autosustentável ou Tight Buffer)
+                            e (quantidade de fibras)</td>
+                        <td class="s5">m</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R40" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">41</div>
+                        </th>
+                        <td class="s2">Detalhamento do Rack do Backbone</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R41" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">42</div>
+                        </th>
+                        <td class="s4"><span style="font-size:10pt;font-family:Arial;font-weight:bold;">Rack </span><span
+                                style="font-size:10pt;font-family:Arial;">(Aberto ou fechado), (Tamanho: = )</span></td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R42" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">43</div>
+                        </th>
+                        <td class="s4">Obs: Acessórios para instalação no Rack (Bandeja, porca gaiola, organizador lateral,
+                            régua de fechamento, exaustor, etc)</td>
+                        <td class="s5"></td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R43" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">44</div>
+                        </th>
+                        <td class="s4">Bandeja fixa - 19&quot; de lagura</td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R44" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">45</div>
+                        </th>
+                        <td class="s4">bandeja deslizante - 19&quot; de lagura</td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R45" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">46</div>
+                        </th>
+                        <td class="s4">Parafuso Porca Gaiola (conjunto com 10 unidades)</td>
+                        <td class="s5">Conj.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R46" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">47</div>
+                        </th>
+                        <td class="s2">Miscelânea</td>
+                        <td class="s0"></td>
+                        <td class="s0"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R47" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">48</div>
+                        </th>
+                        <td class="s4">Abraçadeira de velcro</td>
+                        <td class="s5">m</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R48" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">49</div>
+                        </th>
+                        <td class="s4">Abraçadeira Hellermann (conjunto com 100 unidades)</td>
+                        <td class="s5">conj.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R49" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">50</div>
+                        </th>
+                        <td class="s4">Filtro de linha com 06 ou 08 tomadas</td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R50" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">51</div>
+                        </th>
+                        <td class="s4">Etiquetas para Rack.</td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R51" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">52</div>
+                        </th>
+                        <td class="s4">Etiquetas para Switch e DIO</td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                    <tr style="height: 16px">
+                        <th id="1616767830R52" style="height: 16px;" class="row-headers-background">
+                            <div class="row-header-wrapper" style="line-height: 16px">53</div>
+                        </th>
+                        <td class="s4">Etiquetas para identificação dos cordões ópticos e Pigtails externos</td>
+                        <td class="s5">unid.</td>
+                        <td class="s5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <!-- table para arquivo planilha -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/excellentexport@3.4.3/dist/excellentexport.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- js -->
+    <script src="js/main.js"></script>
+    
 </body>
+
+
 </html>
