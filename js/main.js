@@ -60,7 +60,14 @@ $("#salvar").click(function () {
         onclick: "return ExcellentExport.csv(this, '" + tipoPlanilha + "', 'Quantificacao');",
         text: "Exportar para csv"
     });
+
+    var ex3 = $('<h2>', {
+        id: "titulo-tabela",
+        text: "DESCRIÇÃO BÁSICA - MATERIAL DE INFRA DE REDE"
+    });
+
     $(".exportar").remove();
     $("#quantificacao-form").append(ex1);
     $("#quantificacao-form").append(ex2);
+    $("#txt").append(ex3);
 });

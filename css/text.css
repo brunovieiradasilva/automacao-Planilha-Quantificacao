@@ -8,7 +8,6 @@
 
 .ritz .waffle .s2 {
     border-bottom: 1px SOLID #000000;
-    border-right: 1px SOLID #000000;
     background-color: var(--main-color);
     text-align: left;
     font-weight: bold;
