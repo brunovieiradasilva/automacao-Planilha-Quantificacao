@@ -7,27 +7,6 @@ var tipoCabo;
 
 const tamRack = [4, 6, 8, 10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48]
 
-var contentBB = [
-    `Distribuidor Interno Óptico - Chassi ( ${portasDIO} portas )`,
-    `Caixa de Emendas ( ${fibras} fibras )`,
-    `Pig Tail ( ${tipoFibra} ), ( LC ), ( 2 metros )`,
-    `Acoplador Óptico ( ${tipoFibra} ), ( LC )`,
-    `Terminador Óptico ( ${fibras} fibras )`,
-    `Cabo Óptico ( ${tipoFibra} ), ( ${tipoCabo} ), ( ${fibras} fibras )`,
-    `Rack ( ${tipoRack} ), (Tamanho: ${tamanhoRack} )`,
-    "Organizador lateral para Rack",
-    "Exaustor (Tamanho: 2U )",
-    'Bandeja fixa',
-    'Bandeja deslizante',
-    "Régua de Fechamento",
-    "Parafuso Porca Gaiola (conjunto com 10 unidades)",
-    "Abraçadeira de velcro",
-    "Abraçadeira Hellermann (conjunto com 100 unidades)",
-    "Filtro de linha com 06 tomadas",
-    "Etiquetas para Rack",
-    "Etiquetas para identificação de Cordões Ópticos",
-];
-
 function gerarPlanilhaTotal() {
 
 }
@@ -177,6 +156,27 @@ function gerarPlanilhaBB() {
     tblBody.appendChild(createRow( "Etiqueta identificação do cabo de malha horizontal", (ptsTelecon * 2 + ptsRede) * 2 ));
     tblBody.appendChild(createRow( "Etiquetas para identificação de tomadas e espelho", ptsTelecon * 3 + ptsRede * 2 ));
 
+
+    var contentBB = [
+        `Distribuidor Interno Óptico - Chassi ( ${portasDIO} portas )`,
+        `Caixa de Emendas ( ${fibras} fibras )`,
+        `Pig Tail ( ${tipoFibra} ), ( LC ), ( 2 metros )`,
+        `Acoplador Óptico ( ${tipoFibra} ), ( LC )`,
+        `Terminador Óptico ( ${fibras} fibras )`,
+        `Cabo Óptico ( ${tipoFibra} ), ( ${tipoCabo} ), ( ${fibras} fibras )`,
+        `Rack ( ${tipoRack} ), (Tamanho: ${tamanhoRack} )`,
+        "Organizador lateral para Rack",
+        "Exaustor (Tamanho: 2U )",
+        'Bandeja fixa',
+        'Bandeja deslizante',
+        "Régua de Fechamento",
+        "Parafuso Porca Gaiola (conjunto com 10 unidades)",
+        "Abraçadeira de velcro",
+        "Abraçadeira Hellermann (conjunto com 100 unidades)",
+        "Filtro de linha com 06 tomadas",
+        "Etiquetas para Rack",
+        "Etiquetas para identificação de Cordões Ópticos",
+    ];
     return tblBody;
 }
 
