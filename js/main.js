@@ -36,7 +36,7 @@ $("#salvar").click(function () {
     }
     else if (planilha.value == "m") {
         tipoPlanilha = "mh-table";
-        gerarPlanilhaMH();
+        generateTable();
     }
     else {
         tipoPlanilha = "backbone-table";
