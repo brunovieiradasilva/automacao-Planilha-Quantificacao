@@ -12,10 +12,12 @@ function gerarPlanilhaTotal() {
 }
 
 function createRow( text, value ) {
-    var cell1 = document.createElement('td').appendChild(document.createTextNode(text)); 
+    var cell1 = document.createElement('td'); 
+    cell1.appendChild(document.createTextNode(text));
     var row = document.createElement('tr');
     row.appendChild(cell1);
-    var cell2 = document.createElement('td').appendChild(document.createTextNode(value + ""));
+    var cell2 = document.createElement('td');
+    cell2.appendChild(document.createTextNode(value + ""));
     row.appendChild(cell2);
 
     return row;
