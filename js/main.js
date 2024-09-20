@@ -63,7 +63,7 @@ $("#salvar").click(function () {
 
     var ex3 = $('<h2>', {
         id: "titulo-tabela",
-        text: "DESCRIÇÃO BÁSICA - MATERIAL DE INFRA DE REDE"
+        text: "MATERIAL DE INFRAESTRUTURA DE REDE"
     });
 
     $(".exportar").remove();
@@ -73,7 +73,6 @@ $("#salvar").click(function () {
 });
 
 $(".tipoPlanilha").click(function () {
-    console.log("234");
 
     switch (document.querySelector("input[name='1']:checked").value) {
         case 't':
@@ -91,5 +90,5 @@ $(".tipoPlanilha").click(function () {
         default:
             throw new Error("tipo de planilha não especificada");
     }
-    
+
 });
