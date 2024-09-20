@@ -7,6 +7,27 @@ var tipoCabo;
 
 const tamRack = [4, 6, 8, 10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48]
 
+var contentBB = [
+    `Distribuidor Interno Óptico - Chassi ( ${portasDIO} portas )`,
+    `Caixa de Emendas ( ${fibras} fibras )`,
+    `Pig Tail ( ${tipoFibra} ), ( LC ), ( 2 metros )`,
+    `Acoplador Óptico ( ${tipoFibra} ), ( LC )`,
+    `Terminador Óptico ( ${fibras} fibras )`,
+    `Cabo Óptico ( ${tipoFibra} ), ( ${tipoCabo} ), ( ${fibras} fibras )`,
+    `Rack ( ${tipoRack} ), (Tamanho: ${tamanhoRack} )`,
+    "Organizador lateral para Rack",
+    "Exaustor (Tamanho: 2U )",
+    'Bandeja fixa',
+    'Bandeja deslizante',
+    "Régua de Fechamento",
+    "Parafuso Porca Gaiola (conjunto com 10 unidades)",
+    "Abraçadeira de velcro",
+    "Abraçadeira Hellermann (conjunto com 100 unidades)",
+    "Filtro de linha com 06 tomadas",
+    "Etiquetas para Rack",
+    "Etiquetas para identificação de Cordões Ópticos",
+];
+
 function createRow(text, value) {
     var row = document.createElement('tr');
 
@@ -102,11 +123,8 @@ function gerarPlanilhaMH(tblBody) {
 
     if (!tamRack.includes(usUtilizados)) {
         for (i = 0; i < 15; i++) {
-            console.log(usUtilizados);
             if (usUtilizados < tamRack[i]) {
                 UsTotais = tamRack[i];
-                console.log(usUtilizados);
-                console.log(UsTotais);
                 break;
             }
         }
@@ -197,26 +215,7 @@ function gerarPlanilhaBB(tblBody) {
     //         if (UsTotais > tamRack[i])
     //             UsTotais = tamRack[i-1];    
 
-    var contentBB = [
-        `Distribuidor Interno Óptico - Chassi ( ${portasDIO} portas )`,
-        `Caixa de Emendas ( ${fibras} fibras )`,
-        `Pig Tail ( ${tipoFibra} ), ( LC ), ( 2 metros )`,
-        `Acoplador Óptico ( ${tipoFibra} ), ( LC )`,
-        `Terminador Óptico ( ${fibras} fibras )`,
-        `Cabo Óptico ( ${tipoFibra} ), ( ${tipoCabo} ), ( ${fibras} fibras )`,
-        `Rack ( ${tipoRack} ), (Tamanho: ${tamanhoRack} )`,
-        "Organizador lateral para Rack",
-        "Exaustor (Tamanho: 2U )",
-        'Bandeja fixa',
-        'Bandeja deslizante',
-        "Régua de Fechamento",
-        "Parafuso Porca Gaiola (conjunto com 10 unidades)",
-        "Abraçadeira de velcro",
-        "Abraçadeira Hellermann (conjunto com 100 unidades)",
-        "Filtro de linha com 06 tomadas",
-        "Etiquetas para Rack",
-        "Etiquetas para identificação de Cordões Ópticos",
-    ];
+  
     tblBody.appendChild(createRow(contentBB[0], 1));
     return tblBody;
 }
