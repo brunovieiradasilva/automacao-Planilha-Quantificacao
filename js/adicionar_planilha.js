@@ -28,7 +28,7 @@ function gerarPlanilhaMH(tblBody) {
     ptsVOIP = Number(document.querySelector("#pts-voip").value);
     ptsCFTV = Number(document.querySelector("#pts-cftv").value);
     distMalha = Number(document.querySelector("#distanciaMalha").value);
-    qtdRack = 
+    qtdRack = 1;
 
     PP = Math.ceil((ptsTelecon * 2 + ptsRede) / 24);
 
@@ -92,35 +92,51 @@ function gerarPlanilhaMH(tblBody) {
 
 function gerarPlanilhaBB() {
 
-    ptsTelecon = Number(document.querySelector("#pts-telecom").value);
-    ptsRede = Number(document.querySelector("#pts-rede").value);
-    ptsVOIP = Number(document.querySelector("#pts-voip").value);
-    ptsCFTV = Number(document.querySelector("#pts-cftv").value);
-    distMalha = Number(document.querySelector("#distanciaMalha").value);
-    qtdRack = 
+    andares = Number(document.querySelector("#andares").value);
+    predios = Number(document.querySelector("#predios"));
+    fibrasSecundario = Number(document.querySelector("#fibras-secundario").value);
+    fibrasPrimario = Number(document.querySelector("#fibras-primario").value);
+    velFibraSecundario = Number(document.querySelector("#velocidadeFibraPredio"));
+    velFibraPrimario = Number(document.querySelector("#velocidadeFibraCampus"));
+    alturaAndar = Number(document.querySelector("#alturaPeDireito").value);
 
-    PP = Math.ceil((ptsTelecon * 2 + ptsRede) / 24);
+    qtdDIO = Math.ceil(andares * fibras / 24); 
+    qtdTO = 0;
+    if (fibras > 12) 
+        qtdDIO += (andares - 1) * Math.ceil(fibras / 24);
+    else
+        qtdTO += andares - 1;
 
-    tipoRack = document.querySelector("input[name='tipoRack']:checked").value;
-    UsTotais = 4 * PP + 4;
-    if (tipoRack === "Fechado")     UsTotais += 2;
-    
-    UsTotais *= 1.5;
-    if (UsTotais > 48) {
-        qtdRack = Math.ceil(UsTotais / 48)
-        UsTotais /= qtdRack;
+    var fibrasCaixaEmenda, qtdCaixaEmenda = 1;
+    if (fibras < 12) 
+        fibrasCaixaEmenda = fibras;
+    else {
+        qtdCaixaEmenda = Math.ceil(fibras/12);
+        fibrasCaixaEmenda = Math.ceil(fibras/qtdCaixaEmenda);
     }
+    if (qtdTO == 0)        qtdCaixaEmenda *= andares; 
 
-    if (!tamRack.includes(UsTotais)) 
-        for (i=0; i<15; i++)
-            if (UsTotais > tamRack[i])
-                UsTotais = tamRack[i-1];    
+    // qtdRack = 1;
+    // //tipoRack = document.querySelector("input[name='tipoRack']:checked").value;
+    // UsTotais = 4 * PP + 4;
+    // //if (tipoRack === "Fechado")     UsTotais += 2;
+    
+    // UsTotais *= 1.5;
+    // if (UsTotais > 48) {
+    //     qtdRack = Math.ceil(UsTotais / 48)
+    //     UsTotais /= qtdRack;
+    // }
 
-    tblBody.appendChild(createRow( "Tomada RJ 45 Fêmea (categoria  6)", ptsTelecon * 2 + ptsRede ));
-    tblBody.appendChild(createRow( "Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: azul)", ptsTelecon * 2 + ptsRede - ptsCFTV ));
-    if (ptsCFTV > 0)
-        tblBody.appendChild(createRow( "Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: parede)", ptsCFTV ));
-    tblBody.appendChild(createRow( "Espelho de conexão (Tamanho 2x4) (2 furações)", ptsTelecon ));
+    // if (!tamRack.includes(UsTotais)) 
+    //     for (i=0; i<15; i++)
+    //         if (UsTotais > tamRack[i])
+    //             UsTotais = tamRack[i-1];    
+
+
+
+    tblBody.appendChild(createRow( `Distribuidor Interno Óptico - Chassi ( 24 portas )`, qtdDIO ));
+    tblBody.appendChild(createRow( `Caixa de Emendas ( ${fibrasCaixaEmenda} fibras )`, qtdCaixaEmenda ));
+    tblBody.appendChild(createRow( `Pig Tail ( ${tipoFibra} ), ( simples ), ( LC ), ( 2 metros )`, fibras * andares * 2));
     tblBody.appendChild(createRow( "Espelho de conexão (Tamanho 2x4) (1 furações)", ptsRede ));
     tblBody.appendChild(createRow( "Cabo UTP  rígido (categoria:  6)", ptsTelecon * 2 + ptsRede ));
     tblBody.appendChild(createRow( "PPMH (Patch Panel de Malha Horizontal)", PP ));
@@ -205,25 +221,6 @@ function generateTable() {
         default:
             throw new Error("tipo de planilha não especificada");
     }
-  
-    // // creating all cells
-    // for (let i = 0; i < 20; i++) {
-    //   // creates a table row
-    //   const row = document.createElement("tr");
-  
-    //   for (let j = 0; j < 4; j++) {
-    //     // Create a <td> element and a text node, make the text
-    //     // node the contents of the <td>, and put the <td> at
-    //     // the end of the table row
-    //     const cell = document.createElement("td");
-    //     const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
-    //     cell.appendChild(cellText);
-    //     row.appendChild(cell);
-    //   }
-  
-    //   // add the row to the end of the table body
-    //   tblBody.appendChild(row);
-    // }
   
     // put the <tbody> in the <table>
     tbl.appendChild(tblBody);

@@ -67,12 +67,12 @@
             </div>
 
             <label for="distanciaMalha">Distância da Malha Horizontal (m):</label>
-            <input type="number" id="distanciaMalha" name="distanciaMalha"><br>
+            <input type="number" id="distanciaMalha" name="distanciaMalha">
 
             <label for="tipoRack">Tipo de Rack:</label>
             <input type="radio" id="aberto" value="Aberto" name="tipoRack">Aberto
             <input type="radio" id="fechado" value="Fechado" name="tipoRack">Fechado
-            <br>
+            <br><br>
 
             <hr>
 
@@ -86,10 +86,12 @@
                 <br><br>
                 <label for="andares">Andares:</label><br>
                 <input type="number" id="andares" name="andares"><br>
-                <label for="velocidadeFibraPredio">Velocidade Mínima da Fibra Óptica (Gbps):</label>
+                <label for="velocidadeFibraPredio">Vazão Esperada (Gbps):</label>
                 <input type="number" id="velocidadeFibraPredio" name="velocidadeFibraPredio"><br>
                 <label for="alturaPeDireito">Altura do Pé-Direito (m):</label>
                 <input type="number" id="alturaPeDireito" name="alturaPeDireito"><br>
+                <label for="fibras-secundario">Qauntidade de Fibras:</label>
+                <input type="number" id="fibras-secundario" name="fibras-secundario"><br>
             </div>
             <br><br>
 
@@ -98,13 +100,23 @@
             </label>
             <div id="backbone-primario-field" class="pontos">
                 <br><br>
-                <label for="predios">Prédios:</label><br>
+                <label for="predios">Prédios Conectados:</label><br>
                 <input type="number" id="predios" name="predios"><br>
-                <label for="velocidadeFibraCampus">Velocidade Mínima da Fibra Óptica (Gbps):</label>
+                <label for="velocidadeFibraCampus">Vazão Esperada (Gbps):</label>
                 <input type="number" id="velocidadeFibraCampus" name="velocidadeFibraCampus"><br>
-                <label for="distPredios">Distância entre Prédios (m):</label>
+                <label for="distPredios">Distância Máxima entre Prédios (m):</label>
                 <input type="number" id="distPredios" name="distPredios"><br>
+                <label for="fibras-primario">Qauntidade de Fibras:</label>
+                <input type="number" id="fibras-primario" name="fibras-primario">
             </div>
+
+            <br><br>
+            <div id="backbone-rack-field" class="pontos">
+                <label for="tipoRackBackbone">Tipo de Rack:</label>
+                <input type="radio" id="aberto" value="Aberto" name="tipoRackBackbone">Aberto
+                <input type="radio" id="fechado" value="Fechado" name="tipoRackBackbone">Fechado
+            </div>
+
             <br><br>
 
             <button type="button" id="salvar">Salvar</button>

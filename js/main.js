@@ -17,10 +17,26 @@ $("#telefonia").click(function () {
 
 $("#backbone-secundario").click(function () {
     $("#backbone-secundario-field").toggle("3s");
+
+    var backboneRackField = document.querySelector("#backbone-rack-field"),
+        style = window.getComputedStyle(backboneRackField),
+        display = style.getPropertyValue("display");
+
+    console.log(display);
+
+    if (display == 'none')
+        $("#backbone-rack-field").toggle("3s");
 });
 
 $("#backbone-primario").click(function () {
     $("#backbone-primario-field").toggle("3s");
+
+    var backboneRackField = document.querySelector("#backbone-rack-field"),
+        style = window.getComputedStyle(backboneRackField),
+        display = style.getPropertyValue("display");
+
+    if (display == 'none')
+        $("#backbone-rack-field").toggle("3s");
 });
 
 $("#salvar").click(function () {
