@@ -30,26 +30,14 @@ $("#salvar").click(function () {
 
     let planilha = document.querySelector("input[name='1']:checked");
 
-    let tipoPlanilha = null;
-    if (planilha.value == "t") {
-        tipoPlanilha = "total-table";
-    }
-    else if (planilha.value == "m") {
-        tipoPlanilha = "mh-table";
-    }
-    else {
-        tipoPlanilha = "backbone-table";
-    }
     generateTable();
 
-    $(".table-form").hide("3s");
-    $("#" + tipoPlanilha + "s").show("3s");
 
     var ex1 = $('<a>', {
         class: "exportar",
         download: "quantificacao.xls",
         href: "#",
-        onclick: "return ExcellentExport.excel(this,'" + tipoPlanilha + "', 'Quantificacao');",
+        onclick: "return ExcellentExport.excel(this, 'tabela', 'Quantificacao');",
         text: "Exportar para excel"
     });
 
@@ -57,7 +45,7 @@ $("#salvar").click(function () {
         class: "exportar",
         download: "quantificacao.csv",
         href: "#",
-        onclick: "return ExcellentExport.csv(this, '" + tipoPlanilha + "', 'Quantificacao');",
+        onclick: "return ExcellentExport.csv(this, 'tabela', 'Quantificacao');",
         text: "Exportar para csv"
     });
 

@@ -1,9 +1,10 @@
-var tipoRack;
-var tamanhoRack;
-var portasDIO;
-var fibras;
-var tipoFibra;
-var tipoCabo;
+var tipoRack = 0;
+var tamanhoRack = 0;
+var portasDIO = 0;
+var fibras = 0;
+var tipoFibra = 0;
+var tipoCabo = 0;
+var UsTotais = 0;
 
 const tamRack = [4, 6, 8, 10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48]
 
@@ -26,6 +27,24 @@ var contentBB = [
     "Filtro de linha com 06 tomadas",
     "Etiquetas para Rack",
     "Etiquetas para identificação de Cordões Ópticos",
+];
+
+var contentMH = [
+"Tomada RJ 45 Fêmea (categoria  6)",
+"Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: azul)",
+"Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: parede)",
+"Espelho de conexão (Tamanho 2x4) (2 furações)",
+"Espelho de conexão (Tamanho 2x4) (1 furações)",
+"Cabo UTP  rígido (categoria:  6)",
+"PPMH (Patch Panel de Malha Horizontal)",
+"Organizador frontal de cabo",
+"Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: azul)",
+"Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: vermelho)",
+"Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)",
+`Rack ( ${tipoRack} ), (Tamanho: ${UsTotais} )`,
+"Organizador lateral para Rack",
+"Exaustor (Tamanho: 2U )",
+"NVR (Tamanho: 2U )"
 ];
 
 function createRow(text, value) {
@@ -68,6 +87,7 @@ function generateTable() {
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
 
+    tblBody.appendChild(createRowID("DESCRIÇÃO BASICA","QUANTIDADE","titulo"));
     tbl.id = "tabela"
 
     switch (document.querySelector("input[name='1']:checked").value) {
@@ -99,8 +119,6 @@ function gerarPlanilhaTotal(tblBody) {
 
 function gerarPlanilhaMH(tblBody) {
 
-    tblBody.appendChild(createRowID("DESCRIÇÃO BASICA","QUANTIDADE","titulo"));
-
     ptsTelecon = Number(document.querySelector("#pts-telecom").value);
     ptsRede = Number(document.querySelector("#pts-rede").value);
     ptsVOIP = Number(document.querySelector("#pts-voip").value);
@@ -130,31 +148,31 @@ function gerarPlanilhaMH(tblBody) {
         }
     } else UsTotais = usUtilizados;
 
-    tblBody.appendChild(createRow("Tomada RJ 45 Fêmea (categoria  6)", ptsTelecon * 2 + ptsRede));
-    tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: azul)", ptsTelecon * 2 + ptsRede - ptsCFTV));
+    tblBody.appendChild(createRow(contentMH[0], ptsTelecon * 2 + ptsRede));
+    tblBody.appendChild(createRow(contentMH[1], ptsTelecon * 2 + ptsRede - ptsCFTV));
     if (ptsCFTV > 0)
-        tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: parede)", ptsCFTV));
-    tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (2 furações)", ptsTelecon));
-    tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (1 furações)", ptsRede));
-    tblBody.appendChild(createRow("Cabo UTP  rígido (categoria:  6)", ptsTelecon * 2 + ptsRede));
-    tblBody.appendChild(createRow("PPMH (Patch Panel de Malha Horizontal)", PP));
-    tblBody.appendChild(createRow("Organizador frontal de cabo", PP * 2));
+        tblBody.appendChild(createRow(contentMH[2], ptsCFTV));
+    tblBody.appendChild(createRow(contentMH[3], ptsTelecon));
+    tblBody.appendChild(createRow(contentMH[4], ptsRede));
+    tblBody.appendChild(createRow(contentMH[5], ptsTelecon * 2 + ptsRede));
+    tblBody.appendChild(createRow(contentMH[6], PP));
+    tblBody.appendChild(createRow(contentMH[7], PP * 2));
 
     if (ptsCFTV + ptsVOIP < (ptsTelecon * 2 + ptsRede))
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: azul)", ptsTelecon * 2 + ptsRede - ptsCFTV - ptsVOIP));
+        tblBody.appendChild(createRow(contentMH[8], ptsTelecon * 2 + ptsRede - ptsCFTV - ptsVOIP));
     if (ptsCFTV > 0)
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: vermelho)", ptsCFTV));
+        tblBody.appendChild(createRow(contentMH[9], ptsCFTV));
     if (ptsVOIP > 0)
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)", ptsVOIP));
+        tblBody.appendChild(createRow(contentMH[10], ptsVOIP));
 
-    tblBody.appendChild(createRow(`Rack ( ${tipoRack} ), (Tamanho: ${UsTotais} )`, qtdRack));
+    tblBody.appendChild(createRow(contentMH[11], qtdRack));
 
     if (tipoRack === "Fechado") {
-        tblBody.appendChild(createRow("Organizador lateral para Rack", 2 * qtdRack));
-        tblBody.appendChild(createRow("Exaustor (Tamanho: 2U )", qtdRack));
+        tblBody.appendChild(createRow(contentMH[12], 2 * qtdRack));
+        tblBody.appendChild(createRow(contentMH[13], qtdRack));
     }
 
-    tblBody.appendChild(createRow("NVR (Tamanho: 2U )", Math.ceil(ptsCFTV / 32))); //COMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETAR
+    tblBody.appendChild(createRow(contentMH[14], Math.ceil(ptsCFTV / 32))); //COMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETAR
 
     tblBody.appendChild(createRow('Bandeja fixa', 1));
     tblBody.appendChild(createRow("Régua de Fechamento", UsTotais - usUtilizados)); //COMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETARCOMPLETAR

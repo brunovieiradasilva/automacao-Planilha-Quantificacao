@@ -32,9 +32,9 @@ a {
 
 }
 
-section {
+/* section {
   margin-bottom: 2rem;
-}
+} */
 
 .table-form {
   display: none;
@@ -121,7 +121,7 @@ table {
   justify-content: center;
   align-items: center;
   border-collapse: collapse;
-  padding: 10px;
+   padding-bottom: 4px;
   border: 1px solid black;
 }
 
