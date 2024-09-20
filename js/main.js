@@ -17,26 +17,11 @@ $("#telefonia").click(function () {
 
 $("#backbone-secundario").click(function () {
     $("#backbone-secundario-field").toggle("3s");
-
-    var backboneRackField = document.querySelector("#backbone-rack-field"),
-        style = window.getComputedStyle(backboneRackField),
-        display = style.getPropertyValue("display");
-
-    console.log(display);
-
-    if (display == 'none')
-        $("#backbone-rack-field").toggle("3s");
 });
 
 $("#backbone-primario").click(function () {
     $("#backbone-primario-field").toggle("3s");
 
-    var backboneRackField = document.querySelector("#backbone-rack-field"),
-        style = window.getComputedStyle(backboneRackField),
-        display = style.getPropertyValue("display");
-
-    if (display == 'none')
-        $("#backbone-rack-field").toggle("3s");
 });
 
 $("#salvar").click(function () {
@@ -56,7 +41,7 @@ $("#salvar").click(function () {
         tipoPlanilha = "backbone-table";
     }
     generateTable();
-    
+
     $(".table-form").hide("3s");
     $("#" + tipoPlanilha + "s").show("3s");
 
@@ -85,4 +70,26 @@ $("#salvar").click(function () {
     $("#quantificacao-form").append(ex1);
     $("#quantificacao-form").append(ex2);
     $("#txt").append(ex3);
+});
+
+$(".tipoPlanilha").click(function () {
+    console.log("234");
+
+    switch (document.querySelector("input[name='1']:checked").value) {
+        case 't':
+            $("#planilhaMH").show("3s");
+            $("#planilhaBB").show("3s");
+            break;
+        case 'm':
+            $("#planilhaMH").show("3s");
+            $("#planilhaBB").hide("3s");
+            break;
+        case 'b':
+            $("#planilhaBB").show("3s");
+            $("#planilhaMH").hide("3s");
+            break;
+        default:
+            throw new Error("tipo de planilha não especificada");
+    }
+    
 });
