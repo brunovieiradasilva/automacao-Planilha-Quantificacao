@@ -48,16 +48,15 @@ $("#salvar").click(function () {
     let tipoPlanilha = null;
     if (planilha.value == "t") {
         tipoPlanilha = "total-table";
-        gerarPlanilhaTotal();
     }
     else if (planilha.value == "m") {
         tipoPlanilha = "mh-table";
-        generateTable();
     }
     else {
         tipoPlanilha = "backbone-table";
-        gerarPlanilhaBB();
     }
+    generateTable();
+    
     $(".table-form").hide("3s");
     $("#" + tipoPlanilha + "s").show("3s");
 
