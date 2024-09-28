@@ -1,10 +1,10 @@
-var tipoRack = 0;
 var tamanhoRack = 0;
 var portasDIO = 0;
 var fibras = 0;
 var tipoFibra = 0;
 var tipoCabo = 0;
 var UsTotais = 0;
+var UsUtilizados = 0;
 
 const tamRack = [4, 6, 8, 10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48]
 
@@ -83,7 +83,10 @@ function generateTable() {
 }
 
 function gerarPlanilhaTotal(tblBody) {
+    gerarPlanilhaMH(tblBody);
+    gerarPlanilhaBB(tblBody);
 
+    return tblBody;
 }
 
 function gerarPlanilhaMH(tblBody) {
@@ -97,25 +100,33 @@ function gerarPlanilhaMH(tblBody) {
 
     PP = Math.ceil((ptsTelecon * 2 + ptsRede) / 24);
 
-    tipoRack = document.querySelector("input[name='tipoRackMH']:checked").value;
-    usUtilizados = 4 * PP + 4;
+    var tipoRack;
+    try {
+        tipoRack = document.querySelector("input[name='tipoRackMH']:checked");
+        if (tipoRack == null) throw new Error("Tipo de rack não selecionado");
+        tipoRack = tipoRack.value;
+    } catch (ex) {
+        alert(ex.message);
+        return;
+    }
+    UsUtilizados = 4 * PP + 4;
 
-    if (tipoRack === "Fechado") usUtilizados += 2;
+    if (tipoRack === "Fechado") UsUtilizados += 2;
 
-    usUtilizados *= 1.5;
-    if (usUtilizados > 48) {
-        qtdRack = Math.ceil(usUtilizados / 48)
-        usUtilizados /= qtdRack;
+    UsTotais = UsUtilizados * 1.5;
+    if (UsUtilizados > 48) {
+        qtdRack = Math.ceil(UsTotais / 48)
+        UsTotais /= qtdRack;
     }
 
-    if (!tamRack.includes(usUtilizados)) {
+    if (!tamRack.includes(UsTotais)) {
         for (i = 0; i < 15; i++) {
-            if (usUtilizados < tamRack[i]) {
+            if (UsTotais < tamRack[i]) {
                 UsTotais = tamRack[i];
                 break;
             }
         }
-    } else UsTotais = usUtilizados;
+    } 
 
     tblBody.appendChild(createRow("Tomada RJ 45 Fêmea (categoria  6)", ptsTelecon * 2 + ptsRede));
     tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: azul)", ptsTelecon * 2 + ptsRede - ptsCFTV));
@@ -145,7 +156,7 @@ function gerarPlanilhaMH(tblBody) {
 
     tblBody.appendChild(createRow('Bandeja fixa', 1));
     tblBody.appendChild(createRow("Régua de Fechamento", UsTotais * qtdRack - UsUtilizados)); 
-    tblBody.appendChild(createRow("Parafuso Porca Gaiola (conjunto com 10 unidades)", UsTotais * 4 / 10));
+    tblBody.appendChild(createRow("Parafuso Porca Gaiola (conjunto com 10 unidades)", Math.ceil(UsTotais * 4 / 10) ));
     tblBody.appendChild(createRow("Abraçadeira de velcro (rolos de 3 metros)", qtdRack));
     tblBody.appendChild(createRow("Abraçadeira Hellermann (conjunto com 100 unidades)", qtdRack)); 
     tblBody.appendChild(createRow("Filtro de linha com 06 tomadas", qtdRack)); 
@@ -157,7 +168,7 @@ function gerarPlanilhaMH(tblBody) {
     tblBody.appendChild(createRow("Etiqueta identificação do cabo de malha horizontal", (ptsTelecon * 2 + ptsRede) * 2));
     tblBody.appendChild(createRow("Etiquetas para identificação de tomadas e espelho", ptsTelecon * 3 + ptsRede * 2));
 
-    return tblBody;
+    return;
 }
 
 function gerarPlanilhaBB(tblBody) {
@@ -209,34 +220,42 @@ function gerarPlanilhaBB(tblBody) {
 
     var qtdCordaoOpticoSecundario = 0;
 
-    var tipoRack = document.querySelector("input[name='tipoRackBackbone']:checked").value;
+    var tipoRack;
+    try {
+        tipoRack = document.querySelector("input[name='tipoRackMH']:checked");
+        if (tipoRack == null) throw new Error("Tipo de rack não selecionado");
+        tipoRack = tipoRack.value;
+    } catch (ex) {
+        alert(ex.message);
+        return;
+    }
     var UsUtilizados = qtdDIO * 4 + 4;
     var qtdRack = 1;
 
     if (tipoRack === "Fechado") UsUtilizados += 2;
 
-    UsUtilizados *= 1.5;
+    UsTotais = UsUtilizados * 1.5;
     if (UsUtilizados > 48) {
-        qtdRack = Math.ceil(UsUtilizados / 48)
-        UsUtilizados /= qtdRack;
+        qtdRack = Math.ceil(UsTotais / 48)
+        UsTotais /= qtdRack;
     }
 
-    if (!tamRack.includes(UsUtilizados)) {
+    if (!tamRack.includes(UsTotais)) {
         for (i = 0; i < 15; i++) {
-            if (UsUtilizados < tamRack[i]) {
+            if (UsTotais < tamRack[i]) {
                 UsTotais = tamRack[i];
                 break;
             }
         }
-    } else UsTotais = UsUtilizados;
+    } 
 
     var contentBB = [
         `Distribuidor Interno Óptico - Chassi ( 24 portas )`,                                                   //00
         `Caixa de Emendas ( ${fibrasCaixaEmenda} fibras )`,                                                     //01
-        `Pig Tail ( ${tipoFibraPrimario} ), ( LC ), ( 2 metros )`,                                              //02
-        `Acoplador Óptico ( ${tipoFibraPrimario} ), ( LC )`,                                                    //03
-        `Pig Tail ( ${tipoFibraSecundario} ), ( LC ), ( 2 metros )`,                                            //04
-        `Acoplador Óptico ( ${tipoFibraSecundario} ), ( LC )`,                                                  //05
+        `Pig Tail ( ${tipoFibraPrimario} ), ( duplo ), ( LC ), ( 2 metros )`,                                   //02
+        `Acoplador Óptico ( ${tipoFibraPrimario} ), ( LC ), ( duplo )`,                                         //03
+        `Pig Tail ( ${tipoFibraSecundario} ), ( duplo ), ( LC ), ( 2 metros )`,                                 //04
+        `Acoplador Óptico ( ${tipoFibraSecundario} ), ( LC ), ( duplo )`,                                       //05
         `Terminador Óptico ( ${fibrasCaixaEmenda} fibras )`,                                                    //06
         `Cabo Óptico ( ${tipoFibraPrimario} ), ( ${tipoCaboPrimario} ), ( ${fibras} fibras ) ( metros )`,       //07
         `Cabo Óptico ( ${tipoFibraSecundario} ), ( ${tipoCaboSecundario} ), ( ${fibras} fibras ) ( metros )`,   //08
@@ -262,32 +281,34 @@ function gerarPlanilhaBB(tblBody) {
         metrosFibraPrimario += metrosFibraSecundario;
         fibrasPrimario += fibrasSecundario;
     }
-    tblBody.appendChild(createRow(contentBB[2], fibrasPrimario));
-    tblBody.appendChild(createRow(contentBB[3], fibrasPrimario));
+    tblBody.appendChild(createRow(contentBB[2], fibrasPrimario / 2));
+    tblBody.appendChild(createRow(contentBB[3], fibrasPrimario / 2));
     tblBody.appendChild(createRow(contentBB[20], Math.ceil( fibras / 2 )));
     tblBody.appendChild(createRow(contentBB[7], metrosFibraPrimario));
-    if (!(tipoFibraPrimario === tipoFibraSecundario)) {
-        qtdCordaoOpticoSecundario = fibras * (andares - 1);
-        if (qtdTO === 0)        qtdCordaoOpticoSecundario *= 2;
 
-        tblBody.appendChild(createRow(contentBB[4], fibrasSecundario));
-        tblBody.appendChild(createRow(contentBB[5], fibrasSecundario));
-        tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario / 2 )));
-        tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario));
-    }
-
-    tblBody.appendChild(createRow(contentBB[6], qtdTO));
     tblBody.appendChild(createRow(contentBB[9], qtdRack));
     if (tipoRack === "Fechado")     tblBody.appendChild(createRow(contentBB[11], qtdRack));
     else                            tblBody.appendChild(createRow(contentBB[10], 2 * qtdRack));
     tblBody.appendChild(createRow(contentBB[12], qtdRack));
     tblBody.appendChild(createRow(contentBB[13], UsTotais * qtdRack - UsUtilizados));
+
+    if (!(tipoFibraPrimario === tipoFibraSecundario)) {
+        qtdCordaoOpticoSecundario = fibras * (andares - 1);
+        if (qtdTO === 0)        qtdCordaoOpticoSecundario *= 2;
+
+        tblBody.appendChild(createRow(contentBB[4], fibrasSecundario / 2));
+        tblBody.appendChild(createRow(contentBB[5], fibrasSecundario / 2));
+        tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario / 2 )));
+        tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario));
+    }
+
+    tblBody.appendChild(createRow(contentBB[6], qtdTO));
     tblBody.appendChild(createRow(contentBB[14], Math.ceil( UsTotais * qtdRack * 4 / 10 )));
     tblBody.appendChild(createRow(contentBB[15], qtdRack));
     tblBody.appendChild(createRow(contentBB[16], qtdRack));
     tblBody.appendChild(createRow(contentBB[17], qtdRack));
     tblBody.appendChild(createRow(contentBB[18], qtdRack));
 
-    return tblBody;
+    return;
 }
 
