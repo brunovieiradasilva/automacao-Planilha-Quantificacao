@@ -222,7 +222,7 @@ function gerarPlanilhaBB(tblBody) {
 
     var tipoRack;
     try {
-        tipoRack = document.querySelector("input[name='tipoRackMH']:checked");
+        tipoRack = document.querySelector("input[name='tipoRackBackbone']:checked");
         if (tipoRack == null) throw new Error("Tipo de rack não selecionado");
         tipoRack = tipoRack.value;
     } catch (ex) {
