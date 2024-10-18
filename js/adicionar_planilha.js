@@ -145,12 +145,10 @@ function gerarPlanilhaMH(tblBody) {
     if (ptsVOIP > 0)
         tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)", ptsVOIP));
 
-    tblBody.appendChild(createRow(`Rack ( ${tipoRack} ), (Tamanho: ${UsTotais} )`, qtdRack));
+    tblBody.appendChild(createRow(`Rack ( ${tipoRack} ), (Tamanho: ${UsTotais}U )`, qtdRack));
 
-    if (tipoRack === "Fechado") {
-        tblBody.appendChild(createRow("Organizador lateral para Rack", 2 * qtdRack));
-        tblBody.appendChild(createRow("Exaustor (Tamanho: 2U )", qtdRack));
-    }
+    if (tipoRack === "Fechado")     tblBody.appendChild(createRow("Exaustor (Tamanho: 2U )", qtdRack));
+    else                            tblBody.appendChild(createRow("Organizador lateral para Rack", 2 * qtdRack));
 
     if (ptsCFTV > 0)    tblBody.appendChild(createRow("NVR (Tamanho: 2U )", Math.ceil(ptsCFTV / 32)));  
 
@@ -210,9 +208,9 @@ function gerarPlanilhaBB(tblBody) {
     }
     var metrosFibraPrimario = distPredios * predios;
     
-    var tipoFibraPrimario = "OS1 9x125µm";
+    var tipoFibraPrimario = "OS2 9x125µm";
     var tipoFibraSecundario = "OM4 50x125µm";
-    if ( (alturaPredio > 500 && velFibraSecundario >= 10) || (alturaAndar > 150 && velFibraSecundario >= 40) )
+    if ( (alturaPredio > 500 && velFibraSecundario > 10) || (alturaPredio > 150 && velFibraSecundario > 40) )
         tipoFibraSecundario = "OS1 9x125µm";
 
     var tipoCaboPrimario = "loose";
