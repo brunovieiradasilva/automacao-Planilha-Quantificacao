@@ -111,7 +111,8 @@ function gerarPlanilhaMH(tblBody) {
     }
     UsUtilizados = 4 * PP + 4;
 
-    if (tipoRack === "Fechado") UsUtilizados += 2;
+    if ( ptsCFTV > 0 )              UsUtilizados += Math.ceil( ptsCFTV/32 ) //referente ao NVR
+    if ( tipoRack === "Fechado" )   UsUtilizados += 2;                      //referente ao exaustor
 
     UsTotais = UsUtilizados * 1.5;
     if (UsUtilizados > 48) {
