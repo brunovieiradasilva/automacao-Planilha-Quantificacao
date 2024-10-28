@@ -153,12 +153,13 @@ tr td {
   padding: 10px;
 }
 
-#titulo{
+.titulo{
   background-color: var(--main-color);
   color: #1b1a1a;
   font-weight: bolder;
   text-align: center;
 }
-#titulo > td{
+
+.titulo > td{
   text-align: center;
 }

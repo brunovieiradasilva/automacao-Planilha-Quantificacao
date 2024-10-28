@@ -24,7 +24,7 @@ function createRow(text, value) {
 
 function createRowID(text, value, ID) {
     var row = document.createElement('tr');
-    row.setAttribute('id', ID);
+    row.setAttribute('class', ID);
 
     var cell1 = document.createElement('td');
     cell1.appendChild(document.createTextNode(text));
@@ -48,7 +48,6 @@ function generateTable() {
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
 
-    tblBody.appendChild(createRowID("DESCRIÇÃO BASICA","QUANTIDADE","titulo"));
     tbl.id = "tabela"
 
     try {
@@ -90,6 +89,7 @@ function gerarPlanilhaTotal(tblBody) {
 }
 
 function gerarPlanilhaMH(tblBody) {
+    tblBody.appendChild(createRowID("DESCRIÇÃO BASICA - MALHA HORIZONTAL","QUANTIDADE","titulo"));
 
     ptsTelecon = Number(document.querySelector("#pts-telecom").value);
     ptsRede = Number(document.querySelector("#pts-rede").value);
@@ -97,6 +97,9 @@ function gerarPlanilhaMH(tblBody) {
     ptsCFTV = Number(document.querySelector("#pts-cftv").value);
     distMalha = Number(document.querySelector("#distanciaMalha").value);
     qtdRack = 1;
+    var BBSecundario = document.querySelector("#backbone-secundario").checked;
+    var andares = Number(document.querySelector("#andares").value);
+    if (!BBSecundario)  andares = 1;
 
     PP = Math.ceil((ptsTelecon * 2 + ptsRede) / 24);
 
@@ -111,12 +114,12 @@ function gerarPlanilhaMH(tblBody) {
     }
     UsUtilizados = 4 * PP + 4;
 
-    if ( ptsCFTV > 0 )              UsUtilizados += Math.ceil( ptsCFTV/32 ) //referente ao NVR
+    if ( ptsCFTV > 0 )              UsUtilizados += Math.ceil( ptsCFTV/32 );//referente ao NVR
     if ( tipoRack === "Fechado" )   UsUtilizados += 2;                      //referente ao exaustor
 
     UsTotais = UsUtilizados * 1.5;
     if (UsUtilizados > 48) {
-        qtdRack = Math.ceil(UsTotais / 48)
+        qtdRack = Math.ceil(UsTotais / 48);
         UsTotais /= qtdRack;
     }
 
@@ -134,17 +137,20 @@ function gerarPlanilhaMH(tblBody) {
     if (ptsCFTV > 0)
         tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: parede)", ptsCFTV));
     tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (2 furações)", ptsTelecon));
-    tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (1 furações)", ptsRede));
-    tblBody.appendChild(createRow("Cabo UTP  rígido (categoria:  6)", ptsTelecon * 2 + ptsRede));
+    if (ptsRede > 0)   tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (1 furações)", ptsRede));
+    else        ptsRede = 0;
+    tblBody.appendChild(createRow("Cabo UTP  rígido (categoria:  6)", Math.ceil((ptsTelecon * 2 + ptsRede) * andares * distMalha / 305)));
+
+    PP *= andares;
+    qtdRack *= andares;
     tblBody.appendChild(createRow("PPMH (Patch Panel de Malha Horizontal)", PP));
     tblBody.appendChild(createRow("Organizador frontal de cabo", PP * 2));
-
     if (ptsCFTV + ptsVOIP < (ptsTelecon * 2 + ptsRede))
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: azul)", ptsTelecon * 2 + ptsRede - ptsCFTV - ptsVOIP));
+        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: azul)", (ptsTelecon * 2 + ptsRede - ptsCFTV - ptsVOIP) * andares));
     if (ptsCFTV > 0)
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: vermelho)", ptsCFTV));
+        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: vermelho)", ptsCFTV * andares));
     if (ptsVOIP > 0)
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)", ptsVOIP));
+        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)", ptsVOIP * andares));
 
     tblBody.appendChild(createRow(`Rack ( ${tipoRack} ), (Tamanho: ${UsTotais}U )`, qtdRack));
 
@@ -153,24 +159,24 @@ function gerarPlanilhaMH(tblBody) {
 
     if (ptsCFTV > 0)    tblBody.appendChild(createRow("NVR (Tamanho: 2U )", Math.ceil(ptsCFTV / 32)));  
 
-    tblBody.appendChild(createRow('Bandeja fixa', 1));
-    tblBody.appendChild(createRow("Régua de Fechamento", UsTotais * qtdRack - UsUtilizados)); 
-    tblBody.appendChild(createRow("Parafuso Porca Gaiola (conjunto com 10 unidades)", Math.ceil(UsTotais * 4 / 10) ));
+    tblBody.appendChild(createRow('Bandeja fixa', qtdRack));
+    tblBody.appendChild(createRow("Régua de Fechamento", (UsTotais - UsUtilizados) * qtdRack)); 
+    tblBody.appendChild(createRow("Parafuso Porca Gaiola (conjunto com 10 unidades)", Math.ceil(UsTotais * andares * 4 / 10) ));
     tblBody.appendChild(createRow("Abraçadeira de velcro (rolos de 3 metros)", qtdRack));
     tblBody.appendChild(createRow("Abraçadeira Hellermann (conjunto com 100 unidades)", qtdRack)); 
     tblBody.appendChild(createRow("Filtro de linha com 06 tomadas", qtdRack)); 
     tblBody.appendChild(createRow("Etiquetas para Rack", qtdRack)); 
-    tblBody.appendChild(createRow("Etiquetas para Patch Panel", Math.ceil((ptsTelecon * 2 + ptsRede) / 24)));
-    tblBody.appendChild(createRow("Etiquetas de identificação de portas do Patch Panel", PP));
-    tblBody.appendChild(createRow("Etiquetas para identificação de Patch Cables", ptsTelecon * 2 + ptsRede));
-    tblBody.appendChild(createRow("Etiquetas para identificação de Patch Cables", ptsTelecon * 2 + ptsRede));
-    tblBody.appendChild(createRow("Etiqueta identificação do cabo de malha horizontal", (ptsTelecon * 2 + ptsRede) * 2));
-    tblBody.appendChild(createRow("Etiquetas para identificação de tomadas e espelho", ptsTelecon * 3 + ptsRede * 2));
+    tblBody.appendChild(createRow("Etiquetas para Patch Panel", PP));
+    tblBody.appendChild(createRow("Etiquetas de identificação de portas do Patch Panel", PP * 24));
+    tblBody.appendChild(createRow("Etiquetas para identificação de Patch Cables", (ptsTelecon * 2 + ptsRede) * 2 * andares));
+    tblBody.appendChild(createRow("Etiqueta identificação do cabo de malha horizontal", (ptsTelecon * 2 + ptsRede) * 2 * andares));
+    tblBody.appendChild(createRow("Etiquetas para identificação de tomadas e espelho", ptsTelecon * 3 + ptsRede * 2 * andares));
 
     return;
 }
 
 function gerarPlanilhaBB(tblBody) {
+    tblBody.appendChild(createRowID("DESCRIÇÃO BASICA - BACKBONE ÓPTICO","QUANTIDADE","titulo"));
 
     var andares = Number(document.querySelector("#andares").value);
     var predios = Number(document.querySelector("#predios").value);
@@ -216,10 +222,12 @@ function gerarPlanilhaBB(tblBody) {
         else                qtdCaixaEmenda = seqCaixaEmenda;
     }
 
-    if (predios > 2) {  //no caso de se ter mais de dois predios conectados, deve ser adicionada mais uma caixa de emenda e espaço de 
-                        //DIO para cada predio extra conectado à infraestrutura
+    if (predios > 1) {      //no caso de se ter mais de um predio, deve ser adicionada mais uma caixa de emenda e espaço de 
+                            //DIO para cada predio extra conectado à infraestrutura
         qtdCaixaEmenda += Math.ceil(fibras / 12) * (predios - 1); 
         qtdDIO = Math.ceil(andares * fibras / 24 + (predios - 2) * fibras / 24 );
+
+        qtdCaixaEmenda *= predios;  //isso é para uma conexão mesh entre os prédios
     }
 
     var alturaPredio = alturaAndar * andares;
@@ -228,7 +236,8 @@ function gerarPlanilhaBB(tblBody) {
     for(i=2; i<=andares; i++) {
         metrosFibraSecundario += i*alturaAndar + alturaAndar;
     }
-    var metrosFibraPrimario = distPredios * (predios - 1);
+    metrosFibraSecundario *= 1.1;
+    var metrosFibraPrimario = distPredios * (predios - 1) * 1.1;
     
     var tipoFibraPrimario = "OS2 9x125µm";
     var tipoFibraSecundario = "OM4 50x125µm";
@@ -279,7 +288,7 @@ function gerarPlanilhaBB(tblBody) {
         `Terminador Óptico ( ${fibrasCaixaEmenda} fibras )`,                                                    //06
         `Cabo Óptico ( ${tipoFibraPrimario} ), ( ${tipoCaboPrimario} ), ( ${fibras} fibras ) ( metros )`,       //07
         `Cabo Óptico ( ${tipoFibraSecundario} ), ( ${tipoCaboSecundario} ), ( ${fibras} fibras ) ( metros )`,   //08
-        `Rack ( ${tipoRack} ), (Tamanho: ${UsTotais}U )`,                                                        //09
+        `Rack ( ${tipoRack} ), (Tamanho: ${UsTotais}U )`,                                                       //09
         "Organizador lateral para Rack",                                                                        //10
         "Exaustor (Tamanho: 2U )",                                                                              //11
         'Bandeja fixa',                                                                                         //12
@@ -297,6 +306,20 @@ function gerarPlanilhaBB(tblBody) {
     tblBody.appendChild(createRow(contentBB[0], qtdDIO));
     tblBody.appendChild(createRow(contentBB[1], qtdCaixaEmenda));
 
+    if (BBSecundario) {
+        if (!(tipoFibraPrimario === tipoFibraSecundario)) {
+            qtdCordaoOpticoSecundario = fibras * (andares - 1);
+            if (qtdTO === 0)        qtdCordaoOpticoSecundario *= 2;
+
+            tblBody.appendChild(createRow(contentBB[4], fibrasSecundario / 2));
+            tblBody.appendChild(createRow(contentBB[5], fibrasSecundario / 2));
+            tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario / 2 )));
+            tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario));
+        }
+
+        tblBody.appendChild(createRow(contentBB[6], qtdTO));
+    }
+
     if (BBPrimario) {
         if (tipoFibraPrimario === tipoFibraSecundario && BBSecundario) {
             metrosFibraPrimario += metrosFibraSecundario;
@@ -312,21 +335,7 @@ function gerarPlanilhaBB(tblBody) {
     if (tipoRack === "Fechado")     tblBody.appendChild(createRow(contentBB[11], qtdRack));
     else                            tblBody.appendChild(createRow(contentBB[10], 2 * qtdRack));
     tblBody.appendChild(createRow(contentBB[12], qtdRack));
-    tblBody.appendChild(createRow(contentBB[13], UsTotais * qtdRack - UsUtilizados));
-
-    if (BBSecundario) {
-        if (!(tipoFibraPrimario === tipoFibraSecundario)) {
-            qtdCordaoOpticoSecundario = fibras * (andares - 1);
-            if (qtdTO === 0)        qtdCordaoOpticoSecundario *= 2;
-
-            tblBody.appendChild(createRow(contentBB[4], fibrasSecundario / 2));
-            tblBody.appendChild(createRow(contentBB[5], fibrasSecundario / 2));
-            tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario / 2 )));
-            tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario));
-        }
-
-        tblBody.appendChild(createRow(contentBB[6], qtdTO));
-    }
+    tblBody.appendChild(createRow(contentBB[13], (UsTotais - UsUtilizados) * qtdRack ));
 
     tblBody.appendChild(createRow(contentBB[14], Math.ceil( UsTotais * qtdRack * 4 / 10 )));
     tblBody.appendChild(createRow(contentBB[15], qtdRack));
