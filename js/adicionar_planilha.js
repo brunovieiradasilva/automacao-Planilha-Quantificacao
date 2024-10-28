@@ -99,7 +99,10 @@ function gerarPlanilhaMH(tblBody) {
     qtdRack = 1;
     var BBSecundario = document.querySelector("#backbone-secundario").checked;
     var andares = Number(document.querySelector("#andares").value);
+    var BBPrimario = document.querySelector("#backbone-primario").checked;
+    var predios = Number(document.querySelector("#predios").value);
     if (!BBSecundario)  andares = 1;
+    if (!BBSecundario)  predios = 1;
 
     PP = Math.ceil((ptsTelecon * 2 + ptsRede) / 24);
 
@@ -132,25 +135,26 @@ function gerarPlanilhaMH(tblBody) {
         }
     } 
 
-    tblBody.appendChild(createRow("Tomada RJ 45 Fêmea (categoria  6)", ptsTelecon * 2 + ptsRede));
-    tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: azul)", ptsTelecon * 2 + ptsRede - ptsCFTV));
+    var multiplicador = andares * predios;
+    tblBody.appendChild(createRow("Tomada RJ 45 Fêmea (categoria  6)", (ptsTelecon * 2 + ptsRede) * multiplicador ));
+    tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: azul)", (ptsTelecon * 2 + ptsRede - ptsCFTV) * multiplicador));
     if (ptsCFTV > 0)
-        tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: parede)", ptsCFTV));
-    tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (2 furações)", ptsTelecon));
-    if (ptsRede > 0)   tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (1 furações)", ptsRede));
+        tblBody.appendChild(createRow("Cordão de ligação (Patch Cord), (categoria: 6), (Tamanho: 3m), (Cor: parede)", (ptsCFTV) * multiplicador));
+    tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (2 furações)", ptsTelecon * multiplicador));
+    if (ptsRede > 0)   tblBody.appendChild(createRow("Espelho de conexão (Tamanho 2x4) (1 furações)", ptsRede * multiplicador));
     else        ptsRede = 0;
-    tblBody.appendChild(createRow("Cabo UTP  rígido (categoria:  6)", Math.ceil((ptsTelecon * 2 + ptsRede) * andares * distMalha / 305)));
+    tblBody.appendChild(createRow("Cabo UTP  rígido (categoria:  6)", Math.ceil((ptsTelecon * 2 + ptsRede) * multiplicador * distMalha / 305)));
 
-    PP *= andares;
-    qtdRack *= andares;
+    PP *= multiplicador;
+    qtdRack *= multiplicador;
     tblBody.appendChild(createRow("PPMH (Patch Panel de Malha Horizontal)", PP));
     tblBody.appendChild(createRow("Organizador frontal de cabo", PP * 2));
     if (ptsCFTV + ptsVOIP < (ptsTelecon * 2 + ptsRede))
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: azul)", (ptsTelecon * 2 + ptsRede - ptsCFTV - ptsVOIP) * andares));
+        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: azul)", (ptsTelecon * 2 + ptsRede - ptsCFTV - ptsVOIP) * multiplicador));
     if (ptsCFTV > 0)
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: vermelho)", ptsCFTV * andares));
+        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: vermelho)", ptsCFTV * multiplicador));
     if (ptsVOIP > 0)
-        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)", ptsVOIP * andares));
+        tblBody.appendChild(createRow("Cordão de Ligação, flexível, (Patch Cable), (categoria 6), (Tamanho: 2m),  (cor: amarelo)", ptsVOIP * multiplicador));
 
     tblBody.appendChild(createRow(`Rack ( ${tipoRack} ), (Tamanho: ${UsTotais}U )`, qtdRack));
 
@@ -161,16 +165,16 @@ function gerarPlanilhaMH(tblBody) {
 
     tblBody.appendChild(createRow('Bandeja fixa', qtdRack));
     tblBody.appendChild(createRow("Régua de Fechamento", (UsTotais - UsUtilizados) * qtdRack)); 
-    tblBody.appendChild(createRow("Parafuso Porca Gaiola (conjunto com 10 unidades)", Math.ceil(UsTotais * andares * 4 / 10) ));
+    tblBody.appendChild(createRow("Parafuso Porca Gaiola (conjunto com 10 unidades)", Math.ceil(UsTotais * multiplicador * 4 / 10) ));
     tblBody.appendChild(createRow("Abraçadeira de velcro (rolos de 3 metros)", qtdRack));
     tblBody.appendChild(createRow("Abraçadeira Hellermann (conjunto com 100 unidades)", qtdRack)); 
     tblBody.appendChild(createRow("Filtro de linha com 06 tomadas", qtdRack)); 
     tblBody.appendChild(createRow("Etiquetas para Rack", qtdRack)); 
     tblBody.appendChild(createRow("Etiquetas para Patch Panel", PP));
     tblBody.appendChild(createRow("Etiquetas de identificação de portas do Patch Panel", PP * 24));
-    tblBody.appendChild(createRow("Etiquetas para identificação de Patch Cables", (ptsTelecon * 2 + ptsRede) * 2 * andares));
-    tblBody.appendChild(createRow("Etiqueta identificação do cabo de malha horizontal", (ptsTelecon * 2 + ptsRede) * 2 * andares));
-    tblBody.appendChild(createRow("Etiquetas para identificação de tomadas e espelho", ptsTelecon * 3 + ptsRede * 2 * andares));
+    tblBody.appendChild(createRow("Etiquetas para identificação de Patch Cables", (ptsTelecon * 2 + ptsRede) * 2 * multiplicador));
+    tblBody.appendChild(createRow("Etiqueta identificação do cabo de malha horizontal", (ptsTelecon * 2 + ptsRede) * 2 * multiplicador));
+    tblBody.appendChild(createRow("Etiquetas para identificação de tomadas e espelho", ptsTelecon * 3 + ptsRede * 2 * multiplicador));
 
     return;
 }
@@ -183,7 +187,6 @@ function gerarPlanilhaBB(tblBody) {
     var distPredios = Number(document.querySelector("#distPredios").value);
     var fibras = Number(document.querySelector("#qtdFibras").value);
     var velFibraSecundario = Number(document.querySelector("#velocidadeFibraPredio").value);
-    var velFibraPrimario = Number(document.querySelector("#velocidadeFibraCampus").value);
     var alturaAndar = Number(document.querySelector("#alturaPeDireito").value);
     var BBPrimario = document.querySelector("#backbone-primario").checked;
     var BBSecundario = document.querySelector("#backbone-secundario").checked;
@@ -199,9 +202,9 @@ function gerarPlanilhaBB(tblBody) {
     var fibrasPrimario = fibras;
     var fibrasSecundario = fibras * (andares - 1);
 
-    var qtdDIO = Math.ceil(fibras / 24);
+    var qtdTO = 0;
+    var qtdDIO = Math.ceil(fibrasSecundario / 24);
     if (BBSecundario) {
-        var qtdTO = 0;
         if (fibras > 12)
             qtdDIO = Math.ceil(andares * fibras / 24);
         else
@@ -224,10 +227,8 @@ function gerarPlanilhaBB(tblBody) {
 
     if (predios > 1) {      //no caso de se ter mais de um predio, deve ser adicionada mais uma caixa de emenda e espaço de 
                             //DIO para cada predio extra conectado à infraestrutura
-        qtdCaixaEmenda += Math.ceil(fibras / 12) * (predios - 1); 
-        qtdDIO = Math.ceil(andares * fibras / 24 + (predios - 2) * fibras / 24 );
-
-        qtdCaixaEmenda *= predios;  //isso é para uma conexão mesh entre os prédios
+        qtdCaixaEmenda = Math.ceil((fibrasSecundario + (predios - 1) * fibrasPrimario) / fibrasCaixaEmenda) * predios; 
+        qtdDIO = Math.ceil((fibrasSecundario + fibrasPrimario * (predios - 1)) / 24) * predios;
     }
 
     var alturaPredio = alturaAndar * andares;
@@ -308,16 +309,16 @@ function gerarPlanilhaBB(tblBody) {
 
     if (BBSecundario) {
         if (!(tipoFibraPrimario === tipoFibraSecundario)) {
-            qtdCordaoOpticoSecundario = fibras * (andares - 1);
+            qtdCordaoOpticoSecundario = fibrasSecundario;
             if (qtdTO === 0)        qtdCordaoOpticoSecundario *= 2;
 
-            tblBody.appendChild(createRow(contentBB[4], fibrasSecundario / 2));
-            tblBody.appendChild(createRow(contentBB[5], fibrasSecundario / 2));
+            tblBody.appendChild(createRow(contentBB[4], Math.ceil(fibrasSecundario * predios / 2)));
+            tblBody.appendChild(createRow(contentBB[5], Math.ceil(fibrasSecundario * predios / 2)));
             tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario / 2 )));
-            tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario));
+            tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario * predios));
         }
 
-        tblBody.appendChild(createRow(contentBB[6], qtdTO));
+        tblBody.appendChild(createRow(contentBB[6], qtdTO * predios));
     }
 
     if (BBPrimario) {
@@ -325,23 +326,24 @@ function gerarPlanilhaBB(tblBody) {
             metrosFibraPrimario += metrosFibraSecundario;
             fibrasPrimario += fibrasSecundario;
         }
-        tblBody.appendChild(createRow(contentBB[2], fibrasPrimario / 2));
-        tblBody.appendChild(createRow(contentBB[3], fibrasPrimario / 2));
-        tblBody.appendChild(createRow(contentBB[20], Math.ceil( fibras / 2 )));
-        tblBody.appendChild(createRow(contentBB[7], metrosFibraPrimario));
+        tblBody.appendChild(createRow(contentBB[2], fibrasPrimario * predios / 2));
+        tblBody.appendChild(createRow(contentBB[3], fibrasPrimario * predios / 2));
+        tblBody.appendChild(createRow(contentBB[20], Math.ceil( fibrasPrimario * predios / 2 )));
+        tblBody.appendChild(createRow(contentBB[7], metrosFibraPrimario * (predios - 1)));
     }
 
-    tblBody.appendChild(createRow(contentBB[9], qtdRack));
-    if (tipoRack === "Fechado")     tblBody.appendChild(createRow(contentBB[11], qtdRack));
-    else                            tblBody.appendChild(createRow(contentBB[10], 2 * qtdRack));
-    tblBody.appendChild(createRow(contentBB[12], qtdRack));
-    tblBody.appendChild(createRow(contentBB[13], (UsTotais - UsUtilizados) * qtdRack ));
+    var qtdTotalRack = qtdRack * predios; 
+    tblBody.appendChild(createRow(contentBB[9], qtdTotalRack));
+    if (tipoRack === "Fechado")     tblBody.appendChild(createRow(contentBB[11], qtdTotalRack));
+    else                            tblBody.appendChild(createRow(contentBB[10], 2 * qtdTotalRack));
+    tblBody.appendChild(createRow(contentBB[12], qtdTotalRack));
+    tblBody.appendChild(createRow(contentBB[13], (UsTotais - UsUtilizados) * qtdTotalRack));
 
-    tblBody.appendChild(createRow(contentBB[14], Math.ceil( UsTotais * qtdRack * 4 / 10 )));
-    tblBody.appendChild(createRow(contentBB[15], qtdRack));
-    tblBody.appendChild(createRow(contentBB[16], qtdRack));
-    tblBody.appendChild(createRow(contentBB[17], qtdRack));
-    tblBody.appendChild(createRow(contentBB[18], qtdRack));
+    tblBody.appendChild(createRow(contentBB[14], Math.ceil( UsTotais * qtdTotalRack * 4 / 10 )));
+    tblBody.appendChild(createRow(contentBB[15], qtdTotalRack));
+    tblBody.appendChild(createRow(contentBB[16], qtdTotalRack));
+    tblBody.appendChild(createRow(contentBB[17], qtdTotalRack));
+    tblBody.appendChild(createRow(contentBB[18], qtdTotalRack));
 
     return;
 }
