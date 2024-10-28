@@ -312,9 +312,9 @@ function gerarPlanilhaBB(tblBody) {
             qtdCordaoOpticoSecundario = fibrasSecundario;
             if (qtdTO === 0)        qtdCordaoOpticoSecundario *= 2;
 
-            tblBody.appendChild(createRow(contentBB[4], Math.ceil(fibrasSecundario * predios / 2)));
+            tblBody.appendChild(createRow(contentBB[4], Math.ceil(fibrasSecundario * predios)));
             tblBody.appendChild(createRow(contentBB[5], Math.ceil(fibrasSecundario * predios / 2)));
-            tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario / 2 )));
+            tblBody.appendChild(createRow(contentBB[21], Math.ceil( qtdCordaoOpticoSecundario * predios / 2)));
             tblBody.appendChild(createRow(contentBB[8], metrosFibraSecundario * predios));
         }
 
